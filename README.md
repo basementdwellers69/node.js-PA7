@@ -17,9 +17,14 @@ The polygons in this application are represented using a list of vertex coordina
 
 You may use the built-in procedure for drawing a line.
 
-////CHANGELOG////
+## TODO:
+- add User Interface, buttons and text field to controlling the shape
+- create logic to implement triangle strip mesh
+
+## CHANGELOG
 - v.0.0.1 - Adding some stuff to get started (10/16/20-11.13PM).
   * Implemented basic function (viewing a cube).
   * Implemented crude rotate function.
-  * Basic keyboard controls (WASD/ARROWS).
+  * Basic keyboard controls (WASD/ARROWS). **this must have stop func**
   * still not node.js sadly
+  * add user interface for start
