@@ -18,7 +18,8 @@ The polygons in this application are represented using a list of vertex coordina
 You may use the built-in procedure for drawing a line.
 
 ////CHANGELOG////
-- v.0.0.1 - Adding some stuff to get started.
+- v.0.0.1 - Adding some stuff to get started (10/16/20-11.13PM).
   * Implemented basic function (viewing a cube).
   * Implemented crude rotate function.
   * Basic keyboard controls (WASD/ARROWS).
+  * still not node.js sadly
