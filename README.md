@@ -16,3 +16,9 @@ an application that allows the user to create a polygon mesh. The application mu
 The polygons in this application are represented using a list of vertex coordinates.
 
 You may use the built-in procedure for drawing a line.
+
+////CHANGELOG////
+- v.0.0.1 - Adding some stuff to get started.
+  * Implemented basic function (viewing a cube).
+  * Implemented crude rotate function.
+  * Basic keyboard controls (WASD/ARROWS).
