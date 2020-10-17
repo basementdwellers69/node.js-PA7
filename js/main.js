@@ -7,9 +7,8 @@ var cube = new Cube(0, 0, 400, 300);
 
 // var height = document.documentElement.clientHeight;
 // var width = document.documentElement.clientWidth;
-var width = myCanvas.width,
-    height = myCanvas.height
-
+// var width = myCanvas.width,
+//     height = myCanvas.height
 
 function project(points3d, width, height) {
 
