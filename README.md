@@ -18,11 +18,19 @@ The polygons in this application are represented using a list of vertex coordina
 You may use the built-in procedure for drawing a line.
 
 ## TODO:
-- add User Interface, buttons and text field to controlling the shape
-- create logic to implement triangle strip mesh
-- create controller for zoom-in and zoom-out features.
+- [x] add User Interface, buttons and text field to controlling the shape.
+- [] Create logic to implement triangle strip mesh.
+- [x] Create controller for zoom-in and zoom-out features.
+- [] Implement V.0.0.3 features to main.
 
 ## CHANGELOG
+
+- v.0.0.3 - changed main function (10/18/20-5.05PM).
+  * more crappy Mouse/keyboard event for controls (W,A,S,D/ ARROWS to move, W,A,S,D/ ARROWS + Right Click to rotate, Z-X to zoom);
+  * Add load mesh function;
+  * better stepping transformation.
+  * add a cube and pyramid mesh in JSON.
+  
 - v.0.0.2 - add UI components and canvas field events(10/17/20-9.12PM).
   * Add Mouse-Event for canvas field to zoom, change the view.
   * Add Tutorial section, and About section.
