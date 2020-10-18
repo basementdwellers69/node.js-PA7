@@ -25,6 +25,9 @@ You may use the built-in procedure for drawing a line.
 
 ## CHANGELOG
 
+- v.0.0.4 - updated main function (10/19/20-00.21AM).
+  * Added choose Model control Function.
+
 - v.0.0.3 - changed main function (10/18/20-5.05PM).
   * more crappy Mouse/keyboard event for controls (W,A,S,D/ ARROWS to move, W,A,S,D/ ARROWS + Right Click to rotate, Z-X to zoom);
   * Add load mesh function;
