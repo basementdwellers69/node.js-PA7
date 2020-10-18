@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="css/style.css" type="text/css">
         <title>Programming Assignment 7</title>
     </head>
-    <body>
+    <body class="cursor--default">
         <div id="nav" class="top-app-bar">
             <div class="top-app-bar--row">
                 <section class="top-app-bar__section top-app-bar__section--align-start">
@@ -23,9 +23,9 @@
                 </section>
                 <section class="top-app-bar__section top-app-bar__section--align-end" role="toolbar">
                     <ul class="nav-list">
-                        <li class="nav-item"><a class="nav-link nav-link__inactive" href="#" onclick="setContent(this)">Canvas</a></li>
-                        <li class="nav-item"><a class="nav-link nav-link__inactive" href="#" onclick="setContent(this)">Tutorial</a></li>
-                        <li class="nav-item"><a class="nav-link nav-link__inactive" href="#" onclick="setContent(this)">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Canvas</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Tutorial</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">About</a></li>
                     </ul>
                     <!-- <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Favorite">favorite</button>
                     <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Search">search</button>
@@ -39,7 +39,7 @@
         </div>
         
         <div id="main">
-            <canvas id="canvas" class="content content--inactive"></canvas>
+            <canvas id="canvas" class="content content--inactive" ondblclick="false"></canvas>
             <div id="tutorial" class="content content--inactive a">
                 <h1>Tutorial</h1>
                 <hr>
@@ -63,6 +63,7 @@
             <div id="about" class="content content--active a">
                 <h1>About</h1>
                 <hr>
+                <br>
                 <p>
                     The program allows user to create Polygon mesh in web platform using 
                     <a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API">canvas API</a>. 
@@ -81,9 +82,9 @@
                 <p>
                     Sincerely, our team:
                     <ul style="list-style: circle;">
-                        <li><a href="#"">Adjie Ghusa Mahendra</a></li>
-                        <li><a href="#"">Geraldo Febrian J.</a></li>
-                        <li><a href="#"">Atha. (tulis nama panjang lu)</a></li>
+                        <li><a href="#">Adjie Ghusa Mahendra</a></li>
+                        <li><a href="#">Geraldo Febrian J.</a></li>
+                        <li><a href="#">Atha. (tulis nama panjang lu)</a></li>
                     </ul>
                 </p>
             </div>

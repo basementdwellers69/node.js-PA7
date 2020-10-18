@@ -14,29 +14,20 @@ loadScript([
 
 content = document.getElementsByClassName('content')
 nav_link = document.getElementsByClassName('nav-link')
-// console.log(content)
-// console.log(content['canvas'])
 
-function setContent(e){
+var setContent = function(e) {
     function a(r){
         current = document.getElementsByClassName('nav-link__active')
         if(current.length != 0)
             current[0].classList.replace('nav-link__active', 'nav-link__inactive')
         r.classList.replace('nav-link__inactive', 'nav-link__active')
     }
-    function b(r){
+    function b(z){
         current = document.getElementsByClassName('content--active')
         if(current.length != 0)
             current[0].classList.replace('content--active', 'content--inactive')
-        r.classList.replace('content--inactive', 'content--active')
+        z.classList.replace('content--inactive', 'content--active')
     }
-
-    // console.log('clicked : '+e.text)
-    // current = document.getElementsByClassName('nav-link__active')
-    // if(current.length != 0){
-    //     current[0].classList.replace('nav-link__active', 'nav-link__inactive')
-    // }
-    // e.classList.replace('nav-link__inactive', 'nav-link__active')
     a(e)
     switch(e.text){
         case 'Canvas': 
@@ -50,6 +41,9 @@ function setContent(e){
             break
     }
 }
+document.querySelectorAll('.nav-link').forEach(e => {
+    e.classList.add('nav-link__inactive')
+    e.addEventListener('click', () => setContent(e), false)
+})
 
-// force click Canvas's nav at first load.
-document.getElementsByClassName('nav-link__inactive')[0].click()
+document.getElementsByClassName('nav-link')[0].click()

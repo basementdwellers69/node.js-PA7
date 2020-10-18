@@ -25,7 +25,7 @@ var lastX = myCanvas.width/2,
     dragStart, dragged;
  
 var onMouseDownCanvas = function(e) {
-    document.body.style.mozUserSelect = document.body.style.webkitUserSelect = document.body.style.userSelect = 'none'
+    document.body.style.mozUserSelect = document.body.style.userSelect = 'none'
     lastX = e.offsetX || (e.pageX - myCanvas.offsetLeft)
     lastY = e.offsetY || (e.pageY - myCanvas.offsetTop)
     dragStart = context.transformedPoint(lastX, lastY)
@@ -36,14 +36,15 @@ var onMouseMoveCanvas = function(e) {
     lastY = e.offsetY || (e.pageY - myCanvas.offsetTop)
     dragged = true
     if(dragStart) {
-        myCanvas.style.cursor = 'grab'
+        myCanvas.classList.add('cursor--grab')
         // myCanvas.style.cursor = 'grabbing'
         var pt = context.transformedPoint(lastX, lastY)
         context.translate(pt.x-dragStart.x, pt.y-dragStart.y)
     }
 }
 var onMouseUpCanvas = function(e) {
-    myCanvas.style.cursor = 'default'
+    document.body.style.mozUserSelect = document.body.style.userSelect = 'auto'
+    myCanvas.classList.remove('cursor--grab')
     dragStart = null
     if(!dragged) zoom(e.shiftKey ? -1:1)
 }

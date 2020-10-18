@@ -114,6 +114,19 @@ html, body {
     /* border: 1px solid #9f9f9f; */
     overflow-y: auto;
 }
+.cursor--default {
+    cursor: auto;
+}
+.cursor--grab {
+    cursor: grab !important;
+    cursor: -moz-grab !important;
+    cursor: -webkit-grab !important;
+}
+.cursor--grabbing {
+    cursor: grabbing !important;
+    cursor: -moz-grabbing !important;
+    cursor: -webkit-grabbing !important;
+}
 #sidenav {
     position: absolute;
     width: 16vw;
