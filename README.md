@@ -25,6 +25,8 @@ You may use the built-in procedure for drawing a line.
 
 ## CHANGELOG
 
+- v.0.0.5 - bug fixes (10/19/20-3.40AM).
+
 - v.0.0.4 - updated main function (10/19/20-00.21AM).
   * Added choose Model control Function.
 
