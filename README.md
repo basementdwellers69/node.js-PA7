@@ -28,16 +28,19 @@ You may use the built-in procedure for drawing a line.
 - v.0.0.4 - updated main function (10/19/20-00.21AM).
   * Added choose Model control Function.
 
+
 - v.0.0.3 - changed main function (10/18/20-5.05PM).
   * more crappy Mouse/keyboard event for controls (W,A,S,D/ ARROWS to move, W,A,S,D/ ARROWS + Right Click to rotate, Z-X to zoom);
   * Add load mesh function;
   * better stepping transformation.
   * add a cube and pyramid mesh in JSON.
   
+  
 - v.0.0.2 - add UI components and canvas field events(10/17/20-9.12PM).
   * Add Mouse-Event for canvas field to zoom, change the view.
   * Add Tutorial section, and About section.
   * Add library: bootstrap-4, Material-Icons. this library is for ***User Interface***.
+  
   
 - v.0.0.1 - Adding some stuff to get started (10/16/20-11.13PM).
   * Implemented basic function (viewing a cube).
