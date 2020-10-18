@@ -19,9 +19,9 @@ You may use the built-in procedure for drawing a line.
 
 ## TODO:
 - [x] add User Interface, buttons and text field to controlling the shape.
-- [] Create logic to implement triangle strip mesh.
+- [ ] Create logic to implement triangle strip mesh.
 - [x] Create controller for zoom-in and zoom-out features.
-- [] Implement V.0.0.3 features to main.
+- [ ] Implement V.0.0.3 features to main.
 
 ## CHANGELOG
 
