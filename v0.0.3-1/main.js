@@ -83,6 +83,8 @@ function animate(time) {
     requestAnimationFrame(animate);
 }
 
+console.log(mesh1);
+
 ///CHOOSE MESH BUTTON CONTROLS
 const chooseMeshButton = document.querySelector('button');
 
@@ -104,6 +106,8 @@ chooseMeshButton.onclick = function(){
         meshCtrld = 0;
     }
 }
+
+
 
 /// KEYBOARD CONTROLS ///
 let onClick = false;
