@@ -1,6 +1,5 @@
 import {cube, pyramid} from './models.js';
 import {createMesh, Vec} from './mesh.js';
-
 import {createWireframeRenderer} from './render.js';
 
 
@@ -12,6 +11,7 @@ const mesh1 = createMesh(cube);
 mesh1.color = '#000';
 
 const scene = [mesh1];
+let meshCtrld = 0;
 
 window.addEventListener('load', function() {
   var upload = document.getElementById('fileInput');
@@ -83,6 +83,27 @@ function animate(time) {
     requestAnimationFrame(animate);
 }
 
+///CHOOSE MESH BUTTON CONTROLS
+const chooseMeshButton = document.querySelector('button');
+
+chooseMeshButton.onclick = function(){
+    
+    let limit = scene.length-1;
+    let value = parseInt(chooseMeshButton.value, 10);
+    value = isNaN(value) ? 0 : value;
+    
+    if (value < limit){
+        value++;
+        chooseMeshButton.value = value;
+        chooseMeshButton.innerHTML = value;
+        meshCtrld = value;
+    }else{
+        value = 0;
+        chooseMeshButton.value = value;
+        chooseMeshButton.innerHTML = 0;
+        meshCtrld = 0;
+    }
+}
 
 /// KEYBOARD CONTROLS ///
 let onClick = false;
@@ -97,53 +118,53 @@ window.addEventListener('keydown', press);
     function press(e){
         if(onClick===true){
             if (e.keyCode === 38 /* up */ || e.keyCode === 87 /* w */){
-                mesh1.rotation.x += 0.01;
+                scene[meshCtrld].rotation.x += 0.01;
                 render(scene, camera);
             }
             else if (e.keyCode === 39 /* right */ || e.keyCode === 68 /* d */){
-                mesh1.rotation.y -= 0.01;
+                scene[meshCtrld].rotation.y -= 0.01;
                 render(scene, camera);
             }
             else if (e.keyCode === 40 /* down */ || e.keyCode === 83 /* s */){
-                mesh1.rotation.x -= 0.01;
+                scene[meshCtrld].rotation.x -= 0.01;
                 render(scene, camera);
             }
             else if (e.keyCode === 37 /* left */ || e.keyCode === 65 /* a */ || e.keyCode === 81 /* q */){
-                mesh1.rotation.y += 0.01;
+                scene[meshCtrld].rotation.y += 0.01;
                 render(scene, camera);
             }
             else if(e.keyCode === 90 /* z */){
-                mesh1.position.z -= 1;
+                scene[meshCtrld].position.z -= 1;
                 render(scene, camera);
             }
             else if(e.keyCode === 88 /* z */){
-                mesh1.position.z += 1;
+                scene[meshCtrld].position.z += 1;
                 render(scene, camera);
             }
         }
         else if(onClick===false){
             if (e.keyCode === 38 /* up */ || e.keyCode === 87 /* w */){
-              mesh1.position.y -= 1;
+              scene[meshCtrld].position.y -= 1;
               render(scene, camera);
             }
             else if (e.keyCode === 39 /* right */ || e.keyCode === 68 /* d */){
-              mesh1.position.x += 1;
+              scene[meshCtrld].position.x += 1;
               render(scene, camera);
             }
             else if (e.keyCode === 40 /* down */ || e.keyCode === 83 /* s */){
-              mesh1.position.y += 1;
+              scene[meshCtrld].position.y += 1;
             render(scene, camera);
             }
             else if (e.keyCode === 37 /* left */ || e.keyCode === 65 /* a */){
-              mesh1.position.x -= 1;
+              scene[meshCtrld].position.x -= 1;
               render(scene, camera);
             }
             else if(e.keyCode === 90 /* z */){
-                mesh1.position.z -= 1;
+                scene[meshCtrld].position.z -= 1;
                 render(scene, camera);
             }
             else if(e.keyCode === 88 /* x */){
-                mesh1.position.z += 1;
+                scene[meshCtrld].position.z += 1;
                 render(scene, camera);
             }
         }
