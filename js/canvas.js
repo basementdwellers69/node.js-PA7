@@ -15,7 +15,7 @@ var restoreState = function() {
     width = myCanvas.width,
     height = myCanvas.height
 }
-window.addEventListener('resize', resizeCanvas, true)
+// window.addEventListener('resize', resizeCanvas, true)
 // window.addEventListener('resize', restoreState, true)
 
 resizeCanvas()

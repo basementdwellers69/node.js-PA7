@@ -1,15 +1,16 @@
 function loadScript(script_source) {
     for(i=0; i< script_source.length; i++){
         script = document.createElement('script')
-        script.src = script_source[i]
-        script.setAttribute('type', 'text/javascript')
+        script.src = script_source[i].source
+        script.setAttribute('type', script_source[i].type)
         document.body.appendChild(script)
     }
 }
 loadScript([
-    'js/canvas.js',
-    'js/cube.js',
-    'js/main.js'
+    // {'source' : 'js/states.js', 'type' : 'text/javascript'},
+    {'source' : 'js/canvas.js', 'type' : 'text/javascript'},
+    {'source' : 'js/main.js', 'type' : 'module'},
+    {'source' : 'js/controller.js', 'type' : 'module'}
 ])
 
 content = document.getElementsByClassName('content')
