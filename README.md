@@ -18,13 +18,16 @@ The polygons in this application are represented using a list of vertex coordina
 You may use the built-in procedure for drawing a line.
 
 ## TODO:
-- [x] add User Interface, buttons and text field to controlling the shape.
 - [ ] Create logic to implement triangle strip mesh.
-- [x] Create controller for zoom-in and zoom-out features.
-- [x] Implement V.0.0.3 features to main.
+- [ ] Implement V.0.1.0 features to main.
 - [ ] create function to save mesh.
-- [ ] create function to rotate by the camera, not the mesh
+- [ ] create function to rotate by the camera, not the mesh.
+
 ## CHANGELOG
+- v.0.1.0 - all week 1 criteria already implemented (10/1920-5.18 PM)
+  * Added add/delete polygons Feature.
+  * next UI update will be v.1.0.0 (i hope so).
+  
 - v.0.0.6 - implement main function v.0.0.5, and use it in main **User Interface** (10/19/2020-12.53PM)
 
 - v.0.0.5 - bug fixes (10/19/20-3.40AM).
