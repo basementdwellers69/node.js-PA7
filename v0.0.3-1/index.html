@@ -4,8 +4,36 @@
     <script type="module" src="main.js"></script>
 </head>
 <body>
-    <input type="file" id="fileInput">
-    choose Model: <button value="0">0</button>
-    <canvas></canvas>
+    <table width="100%" height="100%" border="1" overflow="hidden">
+        <tr>
+            <td width= 40% valign="top" align="center">
+                    <br>
+                    <h1>PA-7 V 1.0.0</h1>
+                    <input type="file" id="fileInput">
+                    choose Model: <button value="0">0</button>
+                    <br><br><br>
+                    <p>Polygon List</p>
+                    X 1: <input type="text" placeholder="" style="width:50px">
+                    Y 1: <input type="text" placeholder="" style="width:50px">
+                    Z 1: <input type="text" placeholder="" style="width:50px"><br><br>
+                    X 2: <input type="text" placeholder="" style="width:50px">
+                    Y 2: <input type="text" placeholder="" style="width:50px">
+                    Z 2: <input type="text" placeholder="" style="width:50px"><br><br>
+                    X 3: <input type="text" placeholder="" style="width:50px">
+                    Y 3: <input type="text" placeholder="" style="width:50px">
+                    Z 3: <input type="text" placeholder="" style="width:50px"><br><br>
+                    <button id="enter" style="width:270px;">Enter</button>
+                    <br>
+                    <br>
+                    <div class="parent" style="overflow:scroll; overflow-x: hidden; height:280px">
+                        <ul>
+                        </ul>
+                    </div>
+            </td>
+            <td id="canvas">
+                <canvas></canvas>
+            </td>
+        <tr>
+    </table>
 </body>
 </html>
