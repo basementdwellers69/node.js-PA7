@@ -21,9 +21,11 @@ You may use the built-in procedure for drawing a line.
 - [x] add User Interface, buttons and text field to controlling the shape.
 - [ ] Create logic to implement triangle strip mesh.
 - [x] Create controller for zoom-in and zoom-out features.
-- [ ] Implement V.0.0.3 features to main.
-
+- [x] Implement V.0.0.3 features to main.
+- [ ] create function to save mesh.
+- [ ] create function to rotate by the camera, not the mesh
 ## CHANGELOG
+- v.0.0.6 - implement main function v.0.0.5, and use it in main **User Interface** (10/19/2020-12.53PM)
 
 - v.0.0.5 - bug fixes (10/19/20-3.40AM).
 
