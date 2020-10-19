@@ -1,5 +1,3 @@
-import { createMesh } from "/js/mesh.js"
-
 var 
     // c1 = document.getElementById('input-file'),
     c2 = document.getElementById('save-mesh'),
@@ -28,13 +26,13 @@ var showBNB = function(e) {
         case 'delete-polygon':
             c16.style.display = 'inline-flex'
             break
-        case 'zoom-canvas':
+        case 'zoom-mesh':
             c11.style.display = 'inline-flex'
             break
-        case 'rotate-canvas':
+        case 'rotate-mesh':
             c12.style.display = 'inline-flex'
             break
-        case 'move-canvas':
+        case 'move-mesh':
             c13.style.display = 'inline-flex'
             break
     }
@@ -59,13 +57,13 @@ var hideBNB = function(){
             case 'delete-polygon':
                 c16.style.display = 'none'
                 break
-            case 'zoom-canvas':
+            case 'zoom-mesh':
                 c11.style.display = 'none'
                 break
-            case 'rotate-canvas':
+            case 'rotate-mesh':
                 c12.style.display = 'none'
                 break
-            case 'move-canvas':
+            case 'move-mesh':
                 c13.style.display = 'none'
                 break
         }
@@ -90,13 +88,13 @@ document.getElementsByName('states').forEach(el => {
                     case 'delete-polygon':
                         c16.style.display = 'none'
                         break
-                    case 'zoom-canvas':
+                    case 'zoom-mesh':
                         c11.style.display = 'none'
                         break
-                    case 'rotate-canvas':
+                    case 'rotate-mesh':
                         c12.style.display = 'none'
                         break
-                    case 'move-canvas':
+                    case 'move-mesh':
                         c13.style.display = 'none'
                         break
                 }
@@ -133,42 +131,9 @@ document.getElementsByName('bfc-states').forEach(el => {
     })
 })
 
-// c1.addEventListener('change', function(){
-//     // console.log(this)
-//     if(this.files.length > 0){
-//         file = this.files
-//         var tmp = ""
-//         for(i=0; i < this.files.length; i++){
-//             tmp += this.files[i].name
-//             if(i == this.files.length-1) {
-//                 continue
-//             }
-//             tmp += '; '
-//         }
-//         c7.innerHTML = tmp
-//         c6.disabled = true
-//     }else {
-//         c6.disabled = false
-//     }
-// })
-
-// c6.addEventListener('click', function(){
-//     console.log(file)
-//     if(file)
-//     var reader = new FileReader()
-//     reader.addEventListener('load', function(){
-//         var result = JSON.parse(reader.result)
-//         var model = createMesh(resut.obj)
-//         model.color = 'red'
-//         screen.push(model)
-//         render(scene, camera)
-//     })
-// })
-
-
 let cz = document.getElementsByClassName('bnb-item')
 for(i=0; i < cz.length; i++){
-    console.log(cz[i])
+    // console.log(cz[i])
     if(cz[i].id == "") continue
     cz[i].style.display = 'none'
 }

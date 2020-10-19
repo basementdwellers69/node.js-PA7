@@ -5,21 +5,6 @@ var myCanvas = document.getElementById("canvas"),
 
 trackTransforms(context)
 
-var resizeCanvas = function() {  
-    myCanvas.width = window.innerWidth * (82/100)
-    myCanvas.height = window.innerHeight * (89/100)
-    restoreState()
-}
-var restoreState = function() {
-    // drawShape()
-    width = myCanvas.width,
-    height = myCanvas.height
-}
-// window.addEventListener('resize', resizeCanvas, true)
-// window.addEventListener('resize', restoreState, true)
-
-resizeCanvas()
-
 var lastX = myCanvas.width/2,
     lastY = myCanvas.height/2,
     dragStart, dragged;
@@ -54,11 +39,11 @@ var onMouseWheelCanvas = function(e) {
     return e.preventDefault() && false
 }
 
-myCanvas.addEventListener('mousedown', onMouseDownCanvas)
-myCanvas.addEventListener('mousemove', onMouseMoveCanvas)
-myCanvas.addEventListener('mouseup', onMouseUpCanvas)
-myCanvas.addEventListener('DOMMouseScroll', onMouseWheelCanvas)
-myCanvas.addEventListener('mousewheel', onMouseWheelCanvas)
+// myCanvas.addEventListener('mousedown', onMouseDownCanvas)
+// myCanvas.addEventListener('mousemove', onMouseMoveCanvas)
+// myCanvas.addEventListener('mouseup', onMouseUpCanvas)
+// myCanvas.addEventListener('DOMMouseScroll', onMouseWheelCanvas)
+// myCanvas.addEventListener('mousewheel', onMouseWheelCanvas)
 
 var scaleFactor = 1.1
 var zoom = function(clicks) {

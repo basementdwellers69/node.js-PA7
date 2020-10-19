@@ -8,6 +8,9 @@
         <!-- bootstrap-4 -->
         <link rel="stylesheet" href="lib/bootstrap-4.5.3-dist/css/bootstrap.min.css">
         <script src="lib/bootstrap-4.5.3-dist/js/bootstrap.bundle.min.js"></script>
+        <!-- material design theme -->
+        <!-- <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+        <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script> -->
         <!-- material icons -->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
         <!-- font used -->
@@ -65,11 +68,14 @@
         </div>
         <div id="sidenav">
             <div id="controller" class="controller">
-                <h5>File</h5>
+                <h5>Mesh</h5>
                 <div class="">
                     <input type="button" id="save-mesh" class="controller-item btn btn-outline-dark btn-sm" value="Save mesh"/>
                     <input type="button" id="load-mesh" class="controller-item btn btn-outline-dark btn-sm" 
                     data-toggle="modal" data-target="#modal-load-mesh" value="Load mesh"/>
+                    <input type="button" id="select-mesh" class="controller-item btn btn-outline-dark btn-sm" value="Select mesh"/>
+                    <br>
+                    <small>selected mesh : <span id="msg-select-mesh">0</span></small>
                 </div>
                 <hr>
                 <h5>Polygon</h5>
@@ -91,20 +97,20 @@
                     </div>
                 </div>
                 <hr>
-                <h5>Canvas</h5>
+                <h5>Mesh</h5>
                 <!-- add active class if it's selected -->
                 <div class=" controller-flex">
                     <div class="btn-group-toggle">
-                        <label for="zoom-canvas" class="controller-item btn btn-outline-dark btn-sm">
-                            <input type="radio" id="zoom-canvas" name="states"/>
+                        <label for="zoom-mesh" class="controller-item btn btn-outline-dark btn-sm">
+                            <input type="radio" id="zoom-mesh" name="states"/>
                             Zoom
                         </label>
-                        <label for="rotate-canvas" class="controller-item btn btn-outline-dark btn-sm">
-                            <input type="radio" id="rotate-canvas" name="states"/>
+                        <label for="rotate-mesh" class="controller-item btn btn-outline-dark btn-sm">
+                            <input type="radio" id="rotate-mesh" name="states"/>
                             Rotate
                         </label>
-                        <label for="move-canvas" class="controller-item btn btn-outline-dark btn-sm">
-                            <input type="radio" id="move-canvas" name="states"/>
+                        <label for="move-mesh" class="controller-item btn btn-outline-dark btn-sm">
+                            <input type="radio" id="move-mesh" name="states"/>
                             Move
                         </label>
                     </div>
@@ -118,12 +124,9 @@
                             <input type="checkbox" id="bfc-checkbox" name="bfc-states"/>
                             <span>Disabled</span>
                         </label>
-                        <!-- <label for="disable-bfc" class="controller-item btn btn-outline-dark btn-sm">
-                            <input type="radio" id="disable-bfc" name="bfc-states"/>
-                            Disable
-                        </label> -->
                     </div>
                 </div>
+                <hr>
             </div>
             <hr>
             <div id="bottom-bar" class="bottom-bar">
@@ -166,18 +169,18 @@
                     This program is licensed under the <b>Creative Commons Zero v1.0 Universal</b>.
                     For further details, <a href="LICENSE.txt">click here.</a>
                 </p>
-                <p>
+                <!-- <p>
                     kindly visit our repositories and check our <b>README.md</b> files for further details: 
                     <a href="https://github.com/basementdwellers69/node.js-PA7/">
                         https://github.com/basementdwellers69/node.js-PA7/
                     </a>
-                </p>
+                </p> -->
                 <p>
                     Sincerely, our team:
                     <ul style="list-style: circle;">
                         <li><a href="#">Adjie Ghusa Mahendra</a></li>
+                        <li><a href="#">Atha</a></li>
                         <li><a href="#">Geraldo Febrian J.</a></li>
-                        <li><a href="#">Atha. (tulis nama panjang lu)</a></li>
                     </ul>
                 </p>
             </div>
@@ -186,6 +189,9 @@
             <div id="bnb-container" class="bnb-container">
                 <section id="bnb-zoom" class="bnb-item bnb-align-start">
                     <small>Zoom</small>
+                    <!-- <button class="bnb-item bnb-button material-icons mdc-icon-button" aria-label="Favorite">favorite</button>
+                    <button class="bnb-item bnb-button material-icons mdc-icon-button" aria-label="Search">search</button>
+                    <button class="bnb-item bnb-button material-icons mdc-icon-button" aria-label="Options">more_vert</button> -->
                 </section>
                 <section id="bnb-rotate" class="bnb-item bnb-align-start">
                     <small>Rotate</small>

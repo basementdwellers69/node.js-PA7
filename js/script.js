@@ -8,9 +8,9 @@ function loadScript(script_source) {
 }
 loadScript([
     // {'source' : 'js/states.js', 'type' : 'text/javascript'},
-    {'source' : 'js/canvas.js', 'type' : 'text/javascript'},
+    // {'source' : 'js/canvas.js', 'type' : 'text/javascript'},
+    {'source' : 'js/controller.js', 'type' : 'text/javascript'},
     {'source' : 'js/main.js', 'type' : 'module'},
-    {'source' : 'js/controller.js', 'type' : 'module'}
 ])
 
 content = document.getElementsByClassName('content')
