@@ -169,7 +169,7 @@ var press = function(e){
                     scene[meshCtrld].rotation.x -= 0.01;
                     render(scene, camera);
                 }
-                else if (e.keyCode === 37 /* left */ || e.keyCode === 65 /* a */ || e.keyCode === 81 /* q */){
+                else if (e.keyCode === 37 /* left */ || e.keyCode === 65 /* a */){
                     scene[meshCtrld].rotation.y += 0.01;
                     render(scene, camera);
                 }
