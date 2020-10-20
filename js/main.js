@@ -147,7 +147,7 @@ var press = function(e){
                 // c16.style.display = 'inline-flex'
                 break
             case 'zoom-mesh':
-                console.log(currentStateElement.id)
+                // console.log(currentStateElement.id)
                 if(e.keyCode == 90 /* z */){
                     scene[meshCtrld].position.z -= 1;
                     render(scene, camera);
