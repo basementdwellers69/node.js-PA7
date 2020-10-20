@@ -1,7 +1,12 @@
 function drawMesh(mesh, camera, context) {
-    context.strokeStyle = mesh.color;
-
     mesh.polygons.forEach(polygon => {
+        if(polygon.color!= null){
+            context.strokeStyle = polygon.color;
+            context.lineWidth = 4;
+        }else{
+            context.strokeStyle = mesh.color;
+            context.lineWidth = 1;
+        }
         const projectedPolygon = polygon.map(point => ({...point}));
 
         projectedPolygon.forEach(point => {
