@@ -19,12 +19,17 @@ You may use the built-in procedure for drawing a line.
 
 ## TODO:
 - [ ] Create logic to implement triangle strip mesh.
-- [ ] Implement V.0.1.0 features to main.
+- [ ] Implement V.0.1.1 features to main.
 - [ ] create function to save mesh.
-- [ ] create function to rotate by the camera, not the mesh.
+- [ ] create function to rotate by the camera, not the mesh (unnecessary, maybe ?).
 
 ## CHANGELOG
-- v.0.1.0 - all week 1 criteria already implemented (10/1920-5.18 PM)
+
+- v.0.1.1 - added view selected polygon function (10/20/20-7.47 PM)
+  * user can view selected polygon (from list of polygon) on hover.
+  * seperated ui control function to another file.
+  
+- v.0.1.0 - all week 1 criteria already implemented (10/19/20-5.18 PM)
   * Added add/delete polygons Feature.
   * next UI update will be v.1.0.0 (i hope so).
   
