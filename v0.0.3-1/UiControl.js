@@ -163,6 +163,8 @@ export function addListAfterClick() {
         }
     }
 }
+  editPointMode = false;
+  polyListButton.innerHTML = "Enter";
 }
 
 function updateInputOnClick(element){
