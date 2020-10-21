@@ -25,8 +25,8 @@ You may use the built-in procedure for drawing a line.
 
 ## CHANGELOG
 - v.0.1.2 - added edit existing polygon function (10/22/20-12.07 AM)
- * to edit existing polygon simply click on the polygon list u want to edit.
- * polygon input and the button will automatically change.
+  * to edit existing polygon simply click on the polygon list u want to edit.
+  * polygon input and the button will automatically change.
 
 - v.0.1.1 - added view selected polygon function (10/20/20-7.47 PM)
   * user can view selected polygon (from list of polygon) on hover.
