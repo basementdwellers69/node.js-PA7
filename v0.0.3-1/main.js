@@ -1,7 +1,7 @@
 import {cube, pyramid} from './models.js';
 import {createMesh, Vec} from './mesh.js';
 import {createWireframeRenderer} from './render.js';
-import {addli, resetList, addListAfterClick, addListKeyPress, input, polyListButton, ul, list, trash, btndelete, press, fileHandler} from './UiControl.js';
+import {addli, resetList, addListAfterClick, input, polyListButton, ul, list, trash, btndelete, press, fileHandler} from './UiControl.js';
 
 
 const canvas = document.querySelector('canvas');
@@ -15,8 +15,7 @@ mesh1.color = '#000';
 export const scene = [mesh1];
 export let meshCtrld = 0;
 
-console.log(mesh1);
-//mesh1.polygons[0].color = "red";
+
 
 ///FILE INPUT HANDLER
 window.addEventListener('load',fileHandler);
@@ -91,11 +90,7 @@ chooseMeshButton.onclick = function(){
 }
 
 /// ADD POLYGON HANDLER
-input[1].addEventListener("keypress", addListKeyPress);
-
-//this will check for a click event and create new list item
 polyListButton.addEventListener("click", addListAfterClick);
-
 
 /// KEYBOARD CONTROLS ///
 export let onClick = false;
