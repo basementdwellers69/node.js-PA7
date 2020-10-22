@@ -18,7 +18,7 @@ The polygons in this application are represented using a list of vertex coordina
 You may use the built-in procedure for drawing a line.
 
 ## TODO:
-- [ ] Create logic to implement triangle strip mesh.
+- [ ] Create logic to create polygon mesh with list of vertex coordinates.
 - [ ] Implement V.0.1.1 features to main.
 - [ ] create function to save mesh.
 - [ ] create function to rotate by the camera, not the mesh (unnecessary, maybe ?).
