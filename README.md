@@ -24,6 +24,13 @@ You may use the built-in procedure for drawing a line.
 - [ ] create function to rotate by the camera, not the mesh (unnecessary, maybe ?).
 
 ## CHANGELOG
+- EXPERIMENTAL FEATURES - mouse click to change polygon points (10/22/20-10.21 AM)
+  * hover to choose which polygon to control.
+  * click on the polygon point to choose which point to control.
+  * pressing the tilde key (usually the key before key "1") will confirm the selection.
+  * click on anywhere in canvas. and click the tilde key while still clicking on canvas.
+  * z position cannot be changed at the moment.
+
 - v.0.1.2 - added edit existing polygon function (10/22/20-12.07 AM)
   * to edit existing polygon simply click on the polygon list u want to edit.
   * polygon input and the button will automatically change.
