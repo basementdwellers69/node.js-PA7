@@ -22,6 +22,8 @@ You may use the built-in procedure for drawing a line.
 - [ ] Implement V.0.1.1 features to main.
 - [ ] create function to save mesh.
 - [ ] create function to rotate by the camera, not the mesh (unnecessary, maybe ?).
+- [ ] rotate by z axis. the current implementation is 2 axis.
+- [ ] implement back face culling.
 
 ## CHANGELOG
 - EXPERIMENTAL FEATURES - mouse click to change polygon points (10/22/20-10.21 AM)
