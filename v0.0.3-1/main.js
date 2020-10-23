@@ -1,12 +1,13 @@
 import {cube, pyramid} from './models.js';
 import {createMesh, Vec} from './mesh.js';
 import {createWireframeRenderer} from './render.js';
-import {addli, resetList, addListAfterClick, input, polyListButton, ul, list, trash, btndelete, press, fileHandler} from './UiControl.js';
+import {addli, resetList, addListAfterClick, input, polyListButton, ul, list, trash, press, fileHandler, backfaceCullingButton, setBackfaceCulling} from './UiControl.js';
 
 
 const canvas = document.querySelector('canvas');
 const canvasWindow = document.querySelector('#canvas');
 canvas.width = canvasWindow.clientWidth;
+console.log(canvas.width);
 canvas.height = canvasWindow.clientHeight;
 
 const mesh1 = createMesh(cube);
@@ -88,6 +89,9 @@ chooseMeshButton.onclick = function(){
         resetList();
     }
 }
+
+/// BACKFACE CULLING TOGGLE
+backfaceCullingButton.addEventListener("click", setBackfaceCulling);
 
 /// ADD POLYGON HANDLER
 polyListButton.addEventListener("click", addListAfterClick);
