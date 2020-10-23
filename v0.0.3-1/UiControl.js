@@ -2,6 +2,7 @@ import{scene, meshCtrld, render, camera, onClick} from './main.js';
 import {createMesh, Vec, rotate, offset} from './mesh.js';
 import {offsetToCenter} from './render.js';
 
+
 /// CONTROLING THE LOAD OBJECT
 export function fileHandler(e) {
   var upload = document.getElementById('fileInput');
@@ -30,6 +31,24 @@ export function fileHandler(e) {
   }
 }
 
+export let backfaceCullingButton = document.querySelector("#bCulling");
+export let backfaceCullingIsTrue = false;
+
+export function setBackfaceCulling(){
+    console.log(backfaceCullingButton.value);
+    if(backfaceCullingButton.value === "0"){
+        backfaceCullingIsTrue = true;
+        backfaceCullingButton.value = "1";
+        backfaceCullingButton.innerHTML = "ON";
+        render(scene, camera);
+    }else if(backfaceCullingButton.value === "1"){
+        backfaceCullingButton.value = "0";
+        backfaceCullingIsTrue = false;
+        backfaceCullingButton.innerHTML = "OFF";
+        render(scene, camera);
+    }
+}
+
 
 /// POLYGON LIST HANDLER
 let editPointMode = false;
@@ -40,7 +59,6 @@ export let polyListButton = document.getElementById("enter");
 export let ul = document.querySelector("ul");
 export let list = document.getElementsByTagName("li");
 export let trash = document.getElementsByClassName("delete");
-export let btndelete = document.getElementById("trash");
 
 //For removing items with delete button
 Array.prototype.slice.call(trash).forEach(function(item) {
@@ -144,6 +162,9 @@ function updateLi(){
 
 //this will add a new list item after click 
 export function addListAfterClick() {
+    for(let i = 1; i<=9; i++){
+                console.log(inputlength(input[i]));
+            }
     if(editPointMode === true){
         if (inputlength(input[1]) > 0 && inputlength(input[2]) > 0 && inputlength(input[3]) > 0 && inputlength(input[4]) > 0 && inputlength(input[5]) > 0 && inputlength(input[6]) > 0 && inputlength(input[7]) > 0 && inputlength(input[8]) > 0 && inputlength(input[9]) > 0) {
           let temp = [new Vec(input[1].value,input[2].value,input[3].value),
@@ -152,6 +173,7 @@ export function addListAfterClick() {
             scene[meshCtrld].polygons[choosePoly] = temp;
             resetList();
             render(scene, camera);
+        }
     }else{
         if (inputlength(input[1]) > 0 && inputlength(input[2]) > 0 && inputlength(input[3]) > 0 && inputlength(input[4]) > 0 && inputlength(input[5]) > 0 && inputlength(input[6]) > 0 && inputlength(input[7]) > 0 && inputlength(input[8]) > 0 && inputlength(input[9]) > 0) {
           let temp = [new Vec(input[1].value,input[2].value,input[3].value),
@@ -162,9 +184,9 @@ export function addListAfterClick() {
             render(scene, camera);
         }
     }
-}
-  editPointMode = false;
-  polyListButton.innerHTML = "Enter";
+
+    editPointMode = false;
+    polyListButton.innerHTML = "Enter";
 }
 
 function updateInputOnClick(element){
@@ -243,12 +265,20 @@ export function press(e){
                     scene[meshCtrld].rotation.y += 0.01;
                     render(scene, camera);
                     break;
-                case 90:
-                    scene[meshCtrld].position.z -= 1;
+                case 69:
+                    scene[meshCtrld].rotation.z -= 0.01;
+                    render(scene, camera);
+                    break;
+                case 81:
+                    scene[meshCtrld].rotation.z += 0.01;
                     render(scene, camera);
                     break;
                 case 88:
                     scene[meshCtrld].position.z += 1;
+                    render(scene, camera);
+                    break;
+                case 90:
+                    scene[meshCtrld].position.z -= 1;
                     render(scene, camera);
                     break;
                 default:
@@ -276,6 +306,14 @@ export function press(e){
                 case 37:
                 case 65:
                     scene[meshCtrld].position.x -= 1;
+                    render(scene, camera);
+                    break;
+                case 69:
+                    scene[meshCtrld].rotation.z -= 0.01;
+                    render(scene, camera);
+                    break;
+                case 81:
+                    scene[meshCtrld].rotation.z += 0.01;
                     render(scene, camera);
                     break;
                 case 90:
