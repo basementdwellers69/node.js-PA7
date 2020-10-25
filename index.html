@@ -18,7 +18,7 @@
         <link rel="stylesheet" href="css/style.css" type="text/css">
         <title>Programming Assignment 7</title>
     </head>
-    <body class="cursor--default">
+    <body class="cursor--auto">
         <div id="nav" class="top-app-bar">
             <div class="top-app-bar--row">
                 <section class="top-app-bar__section top-app-bar__section--align-start">
@@ -66,120 +66,137 @@
             </div>
           </div>
         </div>
-        <div id="sidenav">
-            <div id="controller" class="controller">
-                <h5>Mesh</h5>
-                <div class="">
-                    <input type="button" id="save-mesh" class="controller-item btn btn-outline-dark btn-sm" value="Save mesh"/>
-                    <input type="button" id="load-mesh" class="controller-item btn btn-outline-dark btn-sm" 
-                    data-toggle="modal" data-target="#modal-load-mesh" value="Load mesh"/>
-                    <input type="button" id="select-mesh" class="controller-item btn btn-outline-dark btn-sm" value="Select mesh"/>
-                    <br>
-                    <small>selected mesh : <span id="msg-select-mesh">0</span></small>
-                </div>
-                <hr>
-                <h5>Polygon</h5>
-                <!-- add active class if it's selected -->
-                <div class=" controller-flex">
-                    <div class="btn-group-toggle">
-                        <label for="add-polygon" class="controller-item btn btn-outline-dark btn-sm">
-                            <input type="radio" id="add-polygon" name="states"/>
-                            Add
-                        </label>
-                        <label for="edit-polygon" class="controller-item btn btn-outline-dark btn-sm">
-                            <input type="radio" id="edit-polygon" name="states"/>
-                            Edit
-                        </label>
-                        <label for="delete-polygon" class="controller-item btn btn-outline-dark btn-sm">
-                            <input type="radio" id="delete-polygon" name="states"/>
-                            Delete
-                        </label>
-                    </div>
-                </div>
-                <hr>
-                <h5>Mesh</h5>
-                <!-- add active class if it's selected -->
-                <div class=" controller-flex">
-                    <div class="btn-group-toggle">
-                        <label for="zoom-mesh" class="controller-item btn btn-outline-dark btn-sm">
-                            <input type="radio" id="zoom-mesh" name="states"/>
-                            Zoom
-                        </label>
-                        <label for="rotate-mesh" class="controller-item btn btn-outline-dark btn-sm">
-                            <input type="radio" id="rotate-mesh" name="states"/>
-                            Rotate
-                        </label>
-                        <label for="move-mesh" class="controller-item btn btn-outline-dark btn-sm">
-                            <input type="radio" id="move-mesh" name="states"/>
-                            Move
-                        </label>
-                    </div>
-                </div>
-                <hr>
-                <h5>Back Face Culling</h5>
-                <!-- add active class if it's selected -->
-                <div class=" controller-flex">
-                    <div class="btn-group-toggle" data-toggle="buttons">
-                        <label for="bfc-checkbox" class="controller-item btn btn-outline-dark btn-sm">
-                            <input type="checkbox" id="bfc-checkbox" name="bfc-states"/>
-                            <span>Disabled</span>
-                        </label>
-                    </div>
-                </div>
-                <hr>
-            </div>
-            <hr>
-            <div id="bottom-bar" class="bottom-bar">
-                <small id="message">Programming Assignment 7</small>
-            </div>
-        </div>
         
-        <div id="main">
-            <canvas id="canvas" class="content content--inactive" ondblclick="false"></canvas>
-            <div id="tutorial" class="content content--inactive a">
-                <h1>Tutorial</h1>
-                <hr>
-                <br>
-                <h3>Mesh</h3>
-                <p>
-                    the Mesh control is defined by Keyboard-Event. it has several events, as listed below:
-                    <ul style="list-style: circle;">
-                        <li><b>W , UP-ARROW</b> : rotate or move the mesh up, based on the states selected.</li>
-                        <li><b>S , DOWN-ARROW</b> : rotate or move the mesh down, based on the states selected.</li>
-                        <li><b>A , LEFT-ARROW</b> : rotate or move the mesh left, based on the states selected.</li>
-                        <li><b>D , RIGHT-ARROW</b> : rotate or move the mesh right, based on the states selected.</li>
-                        <li><b>Z</b> : zoom-out the mesh.</li>
-                        <li><b>X</b> : zoom-in the mesh.</li>
-                    </ul>
-                </p>
+        <div id="main" class="main">
+            <div id="sidenav_left" class="main-item" style="display: inline-flex;">
+                <div id="controller" class="controller">
+                    <div class="controller-flex">
+                        <h5>Mesh</h5>
+                        <input type="button" id="save-mesh" class="controller-item btn btn-outline-dark btn-sm" value="Save mesh"/>
+                        <input type="button" id="load-mesh" class="controller-item btn btn-outline-dark btn-sm" 
+                        data-toggle="modal" data-target="#modal-load-mesh" value="Load mesh"/>
+                        <input type="button" id="select-mesh" class="controller-item btn btn-outline-dark btn-sm" value="Select mesh"/>
+                        <br>
+                        <small>selected mesh : <span id="msg-select-mesh">0</span></small>
+                    </div>
+                    <hr>
+                    <!-- add active class if it's selected -->
+                    <div class=" controller-flex">
+                        <h5>Polygon</h5>
+                        <div class="btn-group-toggle">
+                            <label for="add-polygon" class="controller-item btn btn-outline-dark btn-sm">
+                                <input type="radio" id="add-polygon" name="states"/>
+                                Add
+                            </label>
+                            <label for="edit-polygon" class="controller-item btn btn-outline-dark btn-sm">
+                                <input type="radio" id="edit-polygon" name="states"/>
+                                Edit
+                            </label>
+                            <label for="delete-polygon" class="controller-item btn btn-outline-dark btn-sm">
+                                <input type="radio" id="delete-polygon" name="states"/>
+                                Delete
+                            </label>
+                        </div>
+                    </div>
+                    <hr>
+                    <!-- add active class if it's selected -->
+                    <div class=" controller-flex">
+                        <h5>Mesh</h5>
+                        <div class="btn-group-toggle">
+                            <label for="zoom-mesh" class="controller-item btn btn-outline-dark btn-sm">
+                                <input type="radio" id="zoom-mesh" name="states"/>
+                                Zoom
+                            </label>
+                            <label for="rotate-mesh" class="controller-item btn btn-outline-dark btn-sm">
+                                <input type="radio" id="rotate-mesh" name="states"/>
+                                Rotate
+                            </label>
+                            <label for="move-mesh" class="controller-item btn btn-outline-dark btn-sm">
+                                <input type="radio" id="move-mesh" name="states"/>
+                                Move
+                            </label>
+                        </div>
+                    </div>
+                    <hr>
+                    <!-- add active class if it's selected -->
+                    <div class=" controller-flex">
+                        <h5>Back Face Culling</h5>
+                        <div class="btn-group-toggle" data-toggle="buttons">
+                            <label for="bfc-checkbox" class="controller-item btn btn-outline-dark btn-sm">
+                                <input type="checkbox" id="bfc-checkbox" name="bfc-states"/>
+                                <span>Disabled</span>
+                            </label>
+                        </div>
+                    </div>
+                    <hr>
+                    <div id="bottom-bar" class="controller-flex bottom-bar">
+                        <small id="message">Programming Assignment 7</small>
+                    </div>
+                </div>    
             </div>
-            <div id="about" class="content content--active a">
-                <h1>About</h1>
-                <hr>
-                <br>
-                <p>
-                    The program allows user to create Polygon mesh in web platform using 
-                    <a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API">canvas API</a>. 
-                    The polygons are represented using a list of vertex coordinates.
-                </p>
-                <p>
-                    This program is licensed under the <b>Creative Commons Zero v1.0 Universal</b>.
-                    For further details, <a href="LICENSE.txt">click here.</a>
-                </p>
-                <!-- <p>
-                    kindly visit our repositories and check our <b>README.md</b> files for further details: 
-                    <a href="https://github.com/basementdwellers69/node.js-PA7/">
-                        https://github.com/basementdwellers69/node.js-PA7/
-                    </a>
-                </p> -->
-                <p>
-                    Sincerely, our team:
-                    <ul style="list-style: circle;">
-                        <li><a href="#">Adjie Ghusa Mahendra</a></li>
-                        <li><a href="#">Geraldo Febrian J.</a></li>
-                        <li><a href="#">Ibnu Athailah</a></li>
-                    </ul>
-                </p>
+            <div id="canvas_container" class="main-item content--inactive">
+                <canvas id="canvas" class="cursor--crosshair" ondblclick="false"></canvas>
+                
+                <div id="sidenav_right" class="">
+                    <div id="cursor-position">
+                        <h5>Cursor Position</h5>
+                        x : <span id="cursor-X">-</span> <br>
+                        y : <span id="cursor-Y">-</span>
+                    </div>
+                    <hr>
+                    <div id="polygon-list">
+                        <h5>Polygon List</h5>
+                    </div>
+                </div>
+            </div>
+            <div id="tutorial" class="main-item content--inactive">
+                <div class="content a">
+                    <h1>Tutorial</h1>
+                    <hr>
+                    <br>
+                    <h3>Mesh</h3>
+                    <p>
+                        the Mesh control is defined by Keyboard-Event. it has several events, as listed below:
+                        <ul style="list-style: circle;">
+                            <li><b>W , UP-ARROW</b> : rotate or move the mesh up, based on the states selected.</li>
+                            <li><b>S , DOWN-ARROW</b> : rotate or move the mesh down, based on the states selected.</li>
+                            <li><b>A , LEFT-ARROW</b> : rotate or move the mesh left, based on the states selected.</li>
+                            <li><b>D , RIGHT-ARROW</b> : rotate or move the mesh right, based on the states selected.</li>
+                            <li><b>Z</b> : zoom-in the mesh.</li>
+                            <li><b>X</b> : zoom-out the mesh.</li>
+                        </ul>
+                    </p>
+                </div>
+            </div>
+            <div id="about" class="main-item content content--inactive">
+                <div class="content a">
+                    <h1>About</h1>
+                    <hr>
+                    <br>
+                    <p>
+                        The program allows user to create Polygon mesh in web platform using 
+                        <a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API">canvas API</a>. 
+                        The polygons are represented using a list of vertex coordinates.
+                    </p>
+                    <p>
+                        This program is licensed under the <b>Creative Commons Zero v1.0 Universal</b>.
+                        For further details, <a href="LICENSE.txt">click here.</a>
+                    </p>
+                    <!-- <p>
+                        kindly visit our repositories and check our <b>README.md</b> files for further details: 
+                        <a href="https://github.com/basementdwellers69/node.js-PA7/">
+                            https://github.com/basementdwellers69/node.js-PA7/
+                        </a>
+                    </p> -->
+                    <p>
+                        Sincerely, our team:
+                        <ul style="list-style: circle;">
+                            <li><a href="#">Adjie Ghusa Mahendra</a></li>
+                            <li><a href="#">Geraldo Febrian J.</a></li>
+                            <li><a href="#">Ibnu Athailah</a></li>
+                        </ul>
+                    </p>
+                </div>
             </div>
         </div>
        <div id="bottom-nav-bar">

@@ -7,7 +7,9 @@ import {createWireframeRenderer} from '/js/render.js';
 // canvas.width = window.innerWidth;
 // canvas.height = window.innerHeight;
 
-var myCanvas = document.getElementById('canvas')
+var myCanvas = document.getElementById('canvas'),
+    txtX = document.getElementById('cursor-X'),
+    txtY = document.getElementById('cursor-Y')
 
 const mesh1 = createMesh(cube);
 mesh1.color = '#000';
@@ -16,14 +18,6 @@ const scene = [mesh1];
 let meshCtrld = 0;
 
 window.addEventListener('load', function() {
-  var upload = document.getElementById('fileInput');
-
-  var c1 = document.getElementById('input-file'),
-      c6 = document.getElementById('load-file'),
-      c7 = document.getElementById('file-name'),
-      c8 = document.getElementById('select-mesh'),
-      c9 = document.getElementById('msg-select-mesh'),
-      file = null;
   
   // Make sure the DOM element exists
   if (c1) {
@@ -108,22 +102,52 @@ function zoom(point, factor) {
     point.y *= scale;
 }
 
-const camera = new Camera();
+export const camera = new Camera();
 camera.pos.z = 300;
 camera.zoom = 20;
 
-const render = createWireframeRenderer(myCanvas);
+export const render = createWireframeRenderer(myCanvas);
 render(scene, camera);
 
+
+// CANVAS LISTENER
 var resizeCanvas = function() {  
-    myCanvas.width = window.innerWidth * (82/100)
-    myCanvas.height = window.innerHeight * (89/100)
+    myCanvas.width = window.innerWidth * (62/100)
+    myCanvas.height = window.innerHeight * (88/100)
     render(scene, camera)
 }
+var getCanvasCoordinates = function(e) {
+    var cRect = myCanvas.getBoundingClientRect(),
+        posX = Math.round(e.clientX - cRect.left),
+        posY = Math.round(e.clientY - cRect.top),
+        centerXpos = Math.round(myCanvas.width / 2),
+        centerYpos = Math.round(myCanvas.height / 2)
+    
+    txtX.innerHTML = posX - centerXpos
+    txtY.innerHTML = posY - centerYpos
+
+    // myCanvas.classList.replace('cursor--auto', 'cursor--crosshair')
+}
+var addDots = function(posX, posY){
+    var c = myCanvas.getContext('2d'),
+        dColor = 'red'
+    
+    c.fillStyle(dColor)
+    c.fillRect(posX, posY, 2, 2)
+}
+
 window.addEventListener('resize', resizeCanvas)
 
+myCanvas.addEventListener('mousemove', ev => getCanvasCoordinates(ev))
+
+myCanvas.addEventListener('mouseleave', () => {
+    txtX.innerHTML = '-'
+    txtY.innerHTML = '-'
+})
+
 resizeCanvas()
-/// KEYBOARD CONTROLS ///
+
+// / KEYBOARD CONTROLS ///
 let onClick = false;
 
 window.addEventListener('mousedown', e2 => {
@@ -138,7 +162,7 @@ var press = function(e){
     if(currentStateElement != null){
         switch(currentStateElement.id){
             case 'add-polygon':
-                // c14.style.display = 'inline-flex'
+
                 break
             case 'edit-polygon':
                 // c15.style.display = 'inline-flex'
@@ -148,46 +172,50 @@ var press = function(e){
                 break
             case 'zoom-mesh':
                 // console.log(currentStateElement.id)
-                if(e.keyCode == 90 /* z */){
+                 if(e.code === 'KeyZ'){
                     scene[meshCtrld].position.z -= 1;
                     render(scene, camera);
-                }else if(e.keyCode == 88 /* x */){
+                }else if(e.code === 'KeyX'){
                     scene[meshCtrld].position.z += 1;
                     render(scene, camera);
                 }
                 break
             case 'rotate-mesh':
-                if (e.keyCode === 38 /* up */ || e.keyCode === 87 /* w */){
+                if (e.code === 'ArrowUp' || e.code === 'KeyW'){
                     scene[meshCtrld].rotation.x += 0.01;
                     render(scene, camera);
                 }
-                else if (e.keyCode === 39 /* right */ || e.keyCode === 68 /* d */){
+                else if (e.code === 'ArrowRight' || e.code === 'KeyD'){
                     scene[meshCtrld].rotation.y -= 0.01;
                     render(scene, camera);
                 }
-                else if (e.keyCode === 40 /* down */ || e.keyCode === 83 /* s */){
+                else if (e.code === 'ArrowDown' || e.code === 'KeyS'){
                     scene[meshCtrld].rotation.x -= 0.01;
                     render(scene, camera);
                 }
-                else if (e.keyCode === 37 /* left */ || e.keyCode === 65 /* a */){
+                else if (e.code === 'ArrowLeft' || e.code === 'KeyA'){
                     scene[meshCtrld].rotation.y += 0.01;
                     render(scene, camera);
                 }
+                else if(e.code === 'KeyQ'){
+                    //Rotate by z axis
+                }
+                else if(e.code === 'KeyE')
                 break
             case 'move-mesh':
-                if (e.keyCode === 38 /* up */ || e.keyCode === 87 /* w */){
+                if (e.code === 'ArrowUp' || e.code === 'KeyW'){
                     scene[meshCtrld].position.y -= 1;
                     render(scene, camera);
                   }
-                  else if (e.keyCode === 39 /* right */ || e.keyCode === 68 /* d */){
+                  else if (e.code === 'ArrowRight' || e.code === 'KeyD'){
                     scene[meshCtrld].position.x += 1;
                     render(scene, camera);
                   }
-                  else if (e.keyCode === 40 /* down */ || e.keyCode === 83 /* s */){
+                  else if (e.code === 'ArrowDown' || e.code === 'KeyS'){
                     scene[meshCtrld].position.y += 1;
                   render(scene, camera);
                   }
-                  else if (e.keyCode === 37 /* left */ || e.keyCode === 65 /* a */){
+                  else if (e.code === 'ArrowLeft' || e.code === 'KeyA'){
                     scene[meshCtrld].position.x -= 1;
                     render(scene, camera);
                   }

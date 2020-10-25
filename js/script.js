@@ -9,30 +9,35 @@ function loadScript(script_source) {
 loadScript([
     // {'source' : 'js/states.js', 'type' : 'text/javascript'},
     // {'source' : 'js/canvas.js', 'type' : 'text/javascript'},
-    {'source' : 'js/controller.js', 'type' : 'text/javascript'},
+    {'source' : 'js/dom.js', 'type' : 'text/javascript'},
+    {'source' : 'js/controller.js', 'type' : 'module'},
     {'source' : 'js/main.js', 'type' : 'module'},
 ])
 
-content = document.getElementsByClassName('content')
+content = document.getElementsByClassName('main-item')
 nav_link = document.getElementsByClassName('nav-link')
-
+console.log(content)
+console.log(nav_link)
 var setContent = function(e) {
     function a(r){
-        current = document.getElementsByClassName('nav-link__active')
+        let current = document.getElementsByClassName('nav-link__active')
         if(current.length != 0)
             current[0].classList.replace('nav-link__active', 'nav-link__inactive')
         r.classList.replace('nav-link__inactive', 'nav-link__active')
     }
     function b(z){
-        current = document.getElementsByClassName('content--active')
-        if(current.length != 0)
+        let current = document.getElementsByClassName('content--active')
+        if(current.length != 0){
+            // current[0].style.display = 'none'
             current[0].classList.replace('content--active', 'content--inactive')
+        }
         z.classList.replace('content--inactive', 'content--active')
+        // z.style.display = 'inline-flex'
     }
     a(e)
     switch(e.text){
         case 'Canvas': 
-            b(content['canvas'])
+            b(content['canvas_container'])
             break
         case 'Tutorial':
             b(content['tutorial'])

@@ -1,20 +1,3 @@
-var 
-    // c1 = document.getElementById('input-file'),
-    c2 = document.getElementById('save-mesh'),
-    c3 = document.getElementById('message'),
-    c4 = document.getElementById('bottom-nav-bar'),
-    c5 = document.getElementById('close'),
-    // c6 = document.getElementById('load-file'),
-    // c7 = document.getElementById('file-name'),
-    c11 = document.getElementById('bnb-zoom'),
-    c12 = document.getElementById('bnb-rotate'),
-    c13 = document.getElementById('bnb-move'),
-    c14 = document.getElementById('bnb-add'),
-    c15 = document.getElementById('bnb-edit'),
-    c16 = document.getElementById('bnb-delete'),
-    file = null,
-    currentStateElement = null
-
 var showBNB = function(e) {
     switch(e.id) {
         case 'add-polygon':
@@ -115,11 +98,11 @@ document.getElementsByName('bfc-states').forEach(el => {
         var changeMessage = function(tmp, msg) {
             c3.innerHTML = 'BFC ' + msg
             setTimeout(handler => {
-                c3.innerHTML = tmp
-            }, 2000)
+                c3.innerHTML = document.title
+            }, 1500)
         }
         if(el.checked) {
-            console.log(el.parentElement)
+            // console.log(el.parentElement)
             console.log('BFC is enabled')
             el.parentElement.getElementsByTagName('span')[0].innerHTML = 'Enabled'
             changeMessage(c3.innerText, 'enabled')

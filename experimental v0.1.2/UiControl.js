@@ -219,7 +219,6 @@ export function getMousePosition(canvas, event) {
     
 }
 
-
 let scale = 400;
 function reOffsetObj(obj){
     let fov = obj.z + cameraVal.pos.z;

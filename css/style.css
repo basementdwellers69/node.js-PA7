@@ -104,14 +104,17 @@ html, body {
     width: 100%;
     padding-right: 10px;
     padding-left: 10px;
+    padding-top: 40px;
     margin-right: auto;
     margin-left: auto;
-    height: 74vh;
+    height: 100%;
     /* border: 1px solid; */
-
+}
+.controller > div:last-child {
+    margin-top: auto;
 }
 .controller-flex {
-    display: flex;
+    /* display: flexbox; */
 }
 .controller-item {
     display: inline-flex;
@@ -119,11 +122,11 @@ html, body {
 }
 .content {
     position: relative;
-    margin-top: 1vh;
-    margin-left: 17vw;
+    /* margin-top: 1vh; */
+    /* margin-left: 17vw; */
 }
 .content--active {
-    display: block;
+    display: inline-flex;
 }
 .content--inactive {
     display: none;
@@ -136,15 +139,17 @@ html, body {
     overflow-y: auto;
 }
 .bottom-bar {
-    float: bottom;
     /* border: 1px solid black; */
     height: 7vh;
-    width: 100%;
+    /* width: 100%; */
     padding: 5px 5px;
     text-align: center;
 }
-.cursor--default {
+.cursor--auto {
     cursor: auto;
+}
+.cursor--crosshair {
+    cursor: crosshair;
 }
 .cursor--grab {
     cursor: grab !important;
@@ -172,18 +177,48 @@ html, body {
     from{ bottom: 30;}
     to { bottom: -70px;}
 }
-#sidenav {
-    position: absolute;
+
+#main {
+    /* margin-top: 1vh; */
+    position: relative;
+    display: flex;
+    flex:  1 1 auto;
+    align-items: center;
+    min-width: 0;
+    padding: 8px 12px;
+    z-index: 1;
+}
+
+#sidenav_left {
+    position: relative;
     width: 16vw;
-    padding: 20px 10px;
     height: 89vh;
-    margin-top: 1vh;
     border-right: 1px solid #e9e9e9;
+    flex-direction: row;
     overflow-y: auto;
 }
 #canvas {
+    /* position: relative; */
     /* border: 1px solid crimson; */
     border: 2px solid #d9d9d9;
+}
+
+#sidenav_right {
+    width: 16vw;
+    height: 89vh;
+    margin-left: 12px;
+    border-left: 1px solid #e9e9e9;;
+    padding: 50px 20px;
+}
+
+.main-item {
+    /* position: relative; */
+    /* display: none; */
+    /* flex:  1 1; */
+    align-items: center;
+    min-width: 0;
+    padding: 0px 12px;
+    z-index: 1;
 }
 
 /* Bottom Navigation Bar */
@@ -196,8 +231,8 @@ html, body {
     z-index: 4;
     height: fit-content;
     width: fit-content;
-    left: 62%;
-    transform: translateX(-62%);
+    left: 45%;
+    /* transform: translateX(-50%); */
     bottom: 30px;
     box-shadow: 0 1px 3px 0 rgba(60,64,67,.3),0 4px 8px 3px rgba(60,64,67,.15);
     background-color: #3c4043;
