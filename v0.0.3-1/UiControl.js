@@ -31,6 +31,44 @@ export function fileHandler(e) {
   }
 }
 
+/// SAVE AS CONTROLLER
+export function saveMeshObj(){
+    let obj = new Array();
+   scene.forEach(function(mesh){
+       let curMesh = new Array();
+       let pos = mesh.position;
+       let rot = mesh.rotation;
+       mesh.polygons.map(e=>curMesh.push(e));
+       curMesh.map(e=>e.map(f=>rotate(f, rot)));
+       curMesh.map(e=>e.map(f=>offset(f, pos)));
+       curMesh.map(e=>obj.push(e));
+   });
+    let data = JSON.stringify({"obj":JSON.stringify(obj).replace(/"(x|y|z)": ?/g,'').replace(/{/g,'[').replace(/}/g,']')}).replace(/"/g,'').replace(/obj/i,'"obj"');
+    let saveAs = prompt("Save file as","New Mesh");
+    if(saveAs != null){
+        saveAs = saveAs + ".json";
+        download(data, saveAs);
+    }
+}
+
+function download(data, filename) {
+    var file = new Blob([data], {type: "octet/stream"});
+    if (window.navigator.msSaveOrOpenBlob) // IE10+
+        window.navigator.msSaveOrOpenBlob(file, filename);
+    else { // Others
+        var a = document.createElement("a"),
+                url = URL.createObjectURL(file);
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(function() {
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);  
+        }, 0); 
+    }
+}
+
 export let backfaceCullingButton = document.querySelector("#bCulling");
 export let backfaceCullingIsTrue = false;
 
