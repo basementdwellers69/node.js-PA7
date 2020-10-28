@@ -14,5 +14,7 @@ var
     c14 = document.getElementById('bnb-add'),
     c15 = document.getElementById('bnb-edit'),
     c16 = document.getElementById('bnb-delete'),
+    c17 = document.getElementById('bfc-checkbox'),
+    c18 = document.getElementById('polygon-list'),
     file = null,
     currentStateElement = null
