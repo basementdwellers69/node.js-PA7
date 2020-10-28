@@ -96,20 +96,21 @@ document.getElementsByName('states').forEach(el => {
 document.getElementsByName('bfc-states').forEach(el => {
     el.addEventListener('change', () => {
         var changeMessage = function(tmp, msg) {
-            c3.innerHTML = 'BFC ' + msg
+            c3.innerHTML = 'BFC ' + msg;
             setTimeout(handler => {
-                c3.innerHTML = document.title
+                c3.innerHTML = document.title;
             }, 1500)
         }
         if(el.checked) {
-            // console.log(el.parentElement)
-            console.log('BFC is enabled')
-            el.parentElement.getElementsByTagName('span')[0].innerHTML = 'Enabled'
-            changeMessage(c3.innerText, 'enabled')
+            el.parentElement.childNodes[1].value = "1";        
+            console.log('BFC is enabled');
+            el.parentElement.getElementsByTagName('span')[0].innerHTML = 'Enabled';
+            changeMessage(c3.innerText, 'enabled');
         }else {
-            console.log('BFC is disabled')
-            el.parentElement.getElementsByTagName('span')[0].innerHTML = 'Disabled'
-            changeMessage(c3.innerText, 'disabled')
+            el.parentElement.childNodes[1].value = "0";
+            console.log('BFC is disabled');
+            el.parentElement.getElementsByTagName('span')[0].innerHTML = 'Disabled';
+            changeMessage(c3.innerText, 'disabled');
         }
     })
 })
