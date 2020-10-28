@@ -27,6 +27,7 @@ You may use the built-in procedure for drawing a line.
 
 ## CHANGELOG
 - v.0.2.0 - added save mesh, and change mesh color features(10/28/20-8.02 PM)
+  * New update is added in v.0.0.3-1 folder (check the desc) of the folder
 
 - v.0.1.3 - added z rotation, backface culling, and fix some bugs (10/24/20-3.16 AM)
   * z rotation by using "q" and "e" key press. (just like we discussed before).
