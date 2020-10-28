@@ -19,13 +19,15 @@ You may use the built-in procedure for drawing a line.
 
 ## TODO:
 - [ ] Create logic to create polygon mesh with list of vertex coordinates.
-- [ ] Implement V.0.1.3 features to main.
-- [ ] create function to save mesh.
+- [ ] Implement V.0.2.0 features to main.
+- [x] create function to save mesh.
 - [ ] create function to rotate by the camera, not the mesh (unnecessary, maybe ?).
 - [x] rotate by z axis. the current implementation is 2 axis.
 - [x] implement back face culling.
 
 ## CHANGELOG
+- v.0.2.0 - added save mesh, and change mesh color features(10/28/20-8.02 PM)
+
 - v.0.1.3 - added z rotation, backface culling, and fix some bugs (10/24/20-3.16 AM)
   * z rotation by using "q" and "e" key press. (just like we discussed before).
   * added backface culling feature with a toggle button in the menu.
