@@ -26,6 +26,8 @@ You may use the built-in procedure for drawing a line.
 - [x] implement back face culling.
 
 ## CHANGELOG
+-- added backface culling to main(10/29/20-1.24 AM)
+
 - v.0.2.0 - added save mesh, and change mesh color features(10/28/20-8.02 PM)
   * New update is added in v.0.0.3-1 folder (check the desc) of the folder
 
