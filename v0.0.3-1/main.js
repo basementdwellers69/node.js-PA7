@@ -9,9 +9,6 @@ const canvasWindow = document.querySelector('#canvas');
 canvas.width = canvasWindow.clientWidth;
 canvas.height = canvasWindow.clientHeight;
 
-//const mesh1 = createMesh(cube);
-//mesh1.color = '#000';
-
 export const scene = new Array();
 export let meshCtrld = 0;
 
@@ -51,20 +48,8 @@ camera.zoom = 20;
 
 export const render = createWireframeRenderer(canvas);
 render(scene, camera);
-function animate(time) {
-    //mesh1.position.x = Math.sin(time / 1000) * 100;
-    //mesh1.position.z = Math.sin(time / 1200) * 100;
-    //mesh1.rotation.x += 0.01;
-    mesh1.rotation.y += 0.01;
-
-
-    render(scene, camera);
-
-    requestAnimationFrame(animate);
-}
 
 (scene[meshCtrld] === undefined || scene[meshCtrld].length < 0) ? console.log("no mesh loaded!") : scene[meshCtrld].polygons.map(addli) ;
-
 
 ///CHOOSE MESH BUTTON CONTROLS
 export const chooseMeshButton = document.querySelector('button');
