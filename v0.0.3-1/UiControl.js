@@ -1,11 +1,14 @@
 import{scene, meshCtrld, render, camera, onClick} from './main.js';
 import {createMesh, Vec, rotate, offset} from './mesh.js';
 import {offsetToCenter} from './render.js';
+//import {PaintedLines} from './paintedLines.js';
+
+export let sortedList=[];
 
 
 /// CONTROLING THE LOAD OBJECT
 export function fileHandler(e) {
-  var upload = document.getElementById('fileInput');
+  let upload = document.getElementById('fileInput');
   
   // Make sure the DOM element exists
   if (upload) 
@@ -14,14 +17,15 @@ export function fileHandler(e) {
       // Make sure a file was selected
       if (upload.files.length > 0) 
       {
-        var reader = new FileReader(); // File reader to read the file 
+        let reader = new FileReader(); // File reader to read the file 
         
         // This event listener will happen when the reader has read the file
         reader.addEventListener('load', function() {
-          var result = JSON.parse(reader.result); // Parse the result into an object      
-                var model = createMesh(result.obj);
-                model.color = "blue";
+          let result = JSON.parse(reader.result); // Parse the result into an object      
+                let model = createMesh(result.obj);
+                model.color = "black";
                 scene.push(model);
+                resetList();
                 render(scene, camera);
         });
         
@@ -42,8 +46,17 @@ export function saveMeshObj(){
        curMesh.map(e=>e.map(f=>rotate(f, rot)));
        curMesh.map(e=>e.map(f=>offset(f, pos)));
        curMesh.map(e=>obj.push(e));
+       
    });
-    let data = JSON.stringify({"obj":JSON.stringify(obj).replace(/"(x|y|z)": ?/g,'').replace(/{/g,'[').replace(/}/g,']')}).replace(/"/g,'').replace(/obj/i,'"obj"');
+    console.log(obj);
+    callPaintedLines();
+
+    function callPaintedLines(){
+        sortedList=[];
+        PaintedLines(obj);
+        console.log(sortedList);
+    }
+    let data = JSON.stringify({"obj":JSON.stringify(sortedList).replace(/"(x|y|z)": ?/g,'').replace(/{/g,'[').replace(/}/g,']')}).replace(/"/g,'').replace(/obj/i,'"obj"');
     let saveAs = prompt("Save file as","New Mesh");
     if(saveAs != null){
         saveAs = saveAs + ".json";
@@ -52,11 +65,11 @@ export function saveMeshObj(){
 }
 
 function download(data, filename) {
-    var file = new Blob([data], {type: "octet/stream"});
+    let file = new Blob([data], {type: "octet/stream"});
     if (window.navigator.msSaveOrOpenBlob) // IE10+
         window.navigator.msSaveOrOpenBlob(file, filename);
     else { // Others
-        var a = document.createElement("a"),
+        let a = document.createElement("a"),
                 url = URL.createObjectURL(file);
         a.href = url;
         a.download = filename;
@@ -115,7 +128,7 @@ function choosePoints() {
         polyListButton.innerHTML = "Update Polygon";
     }else{
         editPointMode = false;
-        for(let i = 1; i<=9; i++){
+        for(let i = 2; i<=10; i++){
             input[i].value = "";
             polyListButton.innerHTML = "Enter";
         }
@@ -129,14 +142,14 @@ function inputlength(obj) {return obj.value.length;}
 ///json formatter
 function prettyPrintArray(json) {
     let output = json.map(x=>JSON.stringify(x,null,1));
-    return JSON.stringify(output, null, '<p>').replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|\"\&])/g,'').replace(/n/g,'').replace("<br>",'');
+    return JSON.stringify(output, null, '<p>').replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\*\+\?\|\"\&])/g,'').replace(/n/g,'').replace("<br>",'');
 }
 
 //collect data that is inserted 
 export function addli(obj) {
     if(ul.children.length === 0){
-        var li = document.createElement("li");
-        var btn = document.createElement("button");
+        let li = document.createElement("li");
+        let btn = document.createElement("button");
         btn.className = "delete";
         btn.innerHTML = "X";
         btn.addEventListener("click", (e) => { ifDelLi(e); });
@@ -148,14 +161,14 @@ export function addli(obj) {
         liVal++;
         li.appendChild(btn);
         ul.appendChild(li);
-        for(let i = 1; i<=9; i++){
+        for(let i = 2; i<=10; i++){
             input[i].value = "";
         }
     }
     else
     {
-        var li = document.createElement("li");
-        var btn = document.createElement("button");
+        let li = document.createElement("li");
+        let btn = document.createElement("button");
         btn.className = "delete";
         btn.innerHTML = "X";
         btn.addEventListener("click", (e) => { ifDelLi(e); });
@@ -167,7 +180,7 @@ export function addli(obj) {
         liVal++;
         li.appendChild(btn);
         ul.appendChild(li);
-        for(let i = 1; i<=9; i++){
+        for(let i = 2; i<=10; i++){
             input[i].value = "";
         }
     }
@@ -204,19 +217,19 @@ export function addListAfterClick() {
                 console.log(inputlength(input[i]));
             }
     if(editPointMode === true){
-        if (inputlength(input[1]) > 0 && inputlength(input[2]) > 0 && inputlength(input[3]) > 0 && inputlength(input[4]) > 0 && inputlength(input[5]) > 0 && inputlength(input[6]) > 0 && inputlength(input[7]) > 0 && inputlength(input[8]) > 0 && inputlength(input[9]) > 0) {
-          let temp = [new Vec(input[1].value,input[2].value,input[3].value),
-                      new Vec(input[4].value,input[5].value,input[6].value),
-                      new Vec(input[7].value,input[8].value,input[9].value)];
+        if (inputlength(input[2]) > 0 && inputlength(input[3]) > 0 && inputlength(input[4]) > 0 && inputlength(input[5]) > 0 && inputlength(input[6]) > 0 && inputlength(input[7]) > 0 && inputlength(input[8]) > 0 && inputlength(input[9]) > 0 && inputlength(input[10]) > 0) {
+          let temp = [new Vec(input[2].value,input[3].value,input[4].value),
+                      new Vec(input[5].value,input[6].value,input[7].value),
+                      new Vec(input[8].value,input[9].value,input[10].value)];
             scene[meshCtrld].polygons[choosePoly] = temp;
             resetList();
             render(scene, camera);
         }
     }else{
-        if (inputlength(input[1]) > 0 && inputlength(input[2]) > 0 && inputlength(input[3]) > 0 && inputlength(input[4]) > 0 && inputlength(input[5]) > 0 && inputlength(input[6]) > 0 && inputlength(input[7]) > 0 && inputlength(input[8]) > 0 && inputlength(input[9]) > 0) {
-          let temp = [new Vec(input[1].value,input[2].value,input[3].value),
-                      new Vec(input[4].value,input[5].value,input[6].value),
-                      new Vec(input[7].value,input[8].value,input[9].value)];
+       if (inputlength(input[2]) > 0 && inputlength(input[3]) > 0 && inputlength(input[4]) > 0 && inputlength(input[5]) > 0 && inputlength(input[6]) > 0 && inputlength(input[7]) > 0 && inputlength(input[8]) > 0 && inputlength(input[9]) > 0 && inputlength(input[10]) > 0) {
+          let temp = [new Vec(input[2].value,input[3].value,input[4].value),
+                      new Vec(input[5].value,input[6].value,input[7].value),
+                      new Vec(input[8].value,input[9].value,input[10].value)];
             scene[meshCtrld].polygons.push(temp);
             addli(temp);
             render(scene, camera);
@@ -229,15 +242,15 @@ export function addListAfterClick() {
 
 function updateInputOnClick(element){
     let temp = scene[meshCtrld].polygons[element.value];
-    input[1].value = temp[0].x;
-    input[2].value = temp[0].y;
-    input[3].value = temp[0].z;
-    input[4].value = temp[1].x;
-    input[5].value = temp[1].y;
-    input[6].value = temp[1].z;
-    input[7].value = temp[2].x;
-    input[8].value = temp[2].y;
-    input[9].value = temp[2].z;
+    input[2].value = temp[0].x;
+    input[3].value = temp[0].y;
+    input[4].value = temp[0].z;
+    input[5].value = temp[1].x;
+    input[6].value = temp[1].y;
+    input[7].value = temp[1].z;
+    input[8].value = temp[2].x;
+    input[9].value = temp[2].y;
+    input[10].value = temp[2].z;
     
 }
 
@@ -365,4 +378,216 @@ export function press(e){
                 }
             break;
     } 
+}
+
+////    SAVE MESH ADDITIONAL FEATURES ///
+
+function round(v) {
+    return (v >= 0 || -1) * Math.round(Math.abs(v));
+}
+
+let newP = function(obj, t, i, j, k){
+    return [
+            round((obj[i][j].x) + t*(obj[i][k].x - obj[i][j].x)),
+            round(obj[i][j].y + t*(obj[i][k].y - obj[i][j].y)),
+            round(obj[i][j].z + t*(obj[i][k].z - obj[i][j].z))
+    ];
+}
+
+let edge = function(obj, i, j, k, l){;
+    return [
+            obj[i][j].x - obj[k][l].x, 
+            obj[i][j].y - obj[k][l].y, 
+            obj[i][j].z - obj[k][l].z
+    ];
+}
+
+let tObj = function(obj1, normal, obj2){
+    this.val = (((obj1[0] * normal[0]) + (obj1[1] * normal[1]) + (obj1[2] * normal[2])) / 
+            ((obj2[0] * normal[0]) + (obj2[1] * normal[1]) + (obj2[2] * normal[2])));
+    return this.val;
+}
+
+let cross = function(obj1, obj2){
+    return [
+            obj1[1]*obj2[2] - obj1[2]*obj2[1],
+            obj1[2]*obj2[0] - obj1[0]*obj2[2],
+            obj1[0]*obj2[1] - obj1[1]*obj2[0]
+    ];
+}
+let param = function(obj1, obj2){
+    this.val =(obj1[0] * obj2[0] + obj1[1]* obj2[1] + obj1[2]* obj2[2]);
+    return this.val;
+}
+
+function PaintedLines(listObject){
+    let leftList = [];
+    let rightList = [];
+    if(listObject.length>1){
+        let edge1Obj = new edge(listObject,0,1,0,0);
+        let edge2Obj = new edge(listObject,0,2,0,1);
+        let edge3Obj = new edge(listObject,0,0,0,2);
+        let NormalObj = [
+            (edge1Obj[1] * edge2Obj[2]) - (edge2Obj[1] * edge1Obj[2]),
+            (edge1Obj[2] * edge2Obj[0]) - (edge2Obj[2] * edge1Obj[0]),
+            (edge1Obj[0] * edge2Obj[1]) - (edge2Obj[0] * edge1Obj[1])
+        ];
+        for(let i = 1;i<listObject.length;i++){
+            
+            let edge1 = new edge(listObject,i,0,0,0);
+            let edge2 = new edge(listObject,i,1,0,0);
+            let edge3 = new edge(listObject,i,2,0,0);
+            let a = round((NormalObj[0] * edge1[0]) +(NormalObj[1] * edge1[1]) +(NormalObj[2] * edge1[2]));
+            let b = round((NormalObj[0] * edge2[0]) +(NormalObj[1] * edge2[1]) +(NormalObj[2] * edge2[2]));
+            let c = round((NormalObj[0] * edge3[0]) +(NormalObj[1] * edge3[1]) +(NormalObj[2] * edge3[2]));
+            
+            if(a<=0 && b<=0 && c<=0){
+                leftList.push(listObject[i]);
+            }else if(a>=0 && b>=0 && c>=0){
+                rightList.push(listObject[i]);
+            }else if ((a <= 0 && b <= 0 && c > 0) || (a > 0 && b > 0 && c <= 0)){
+                let c1 = new edge(listObject,i,2,0,0);
+                let c2 = new edge(listObject,i,2,0,1);
+                let c3 = new edge(listObject,i,2,0,2);
+                let cross1 = new cross(edge1Obj, c1);
+                let cross2 = new cross(edge2Obj, c2);
+                let cross3 = new cross(edge3Obj, c3);
+                let param1 = new param(NormalObj, cross1);
+                let param2 = new param(NormalObj, cross2);
+                let param3 = new param(NormalObj, cross3);
+                
+                if(param1.val <= -1 || param2.val <= -1 || param3.val <= -1){
+                    
+                    leftList.push(listObject[i]);
+                    
+                }else{
+                    let e1 = new edge(listObject,0,0,i,2);
+                    let e2 = new edge(listObject,i,0,i,2);
+                    let e3 = new edge(listObject,i,1,i,2);
+                    let t = new tObj(e1, NormalObj, e2);
+                    let t2 = new tObj(e1, NormalObj, e3);
+                    let newP1 = new newP(listObject, t.val, i, 2, 0);
+                    let newP2 = new newP(listObject, t2.val, i, 2, 1);
+                    let newMesh1 = [
+                        [listObject[i][2].x,listObject[i][2].y,listObject[i][2].z],
+                        newP1,
+                        newP2
+                    ];
+                    let newMesh2 = [
+                        [listObject[i][0][0],listObject[i][0][1],listObject[i][0][2]],
+                        newP1,
+                        [listObject[i][1][0],listObject[i][1][1],listObject[i][1][2]]
+                    ];
+                    let newMesh3 = [
+                        [listObject[i][1][0],listObject[i][1][1],listObject[i][1][2]],
+                        newP1,
+                        newP2
+                    ];
+                    if(c > 0){
+                        leftList.push(newMesh2);
+                        leftList.push(newMesh3);
+                    }else{
+                        leftList.push(newMesh1);
+                    }
+                }
+                
+            }else if ((a <= 0 && c <= 0 && b > 0) || (a > 0 && c > 0 && b <= 0)){
+                let c1 = new edge(listObject,i,1,0,0);
+                let c2 = new edge(listObject,i,1,0,1);
+                let c3 = new edge(listObject,i,1,0,2);
+                let cross1 = new cross(edge1Obj, c1);
+                let cross2 = new cross(edge2Obj, c2);
+                let cross3 = new cross(edge3Obj, c3);
+                let param1 = new param(NormalObj, cross1);
+                let param2 = new param(NormalObj, cross2);
+                let param3 = new param(NormalObj, cross3);
+
+                if(param1.val <= -1 || param2.val <= -1 || param3.val <= -1){
+                    leftList.push(listObject[i]);
+                }else{
+                    let e1 = new edge(listObject,0,0,i,1);
+                    let e2 = new edge(listObject,i,2,i,1);
+                    let e3 = new edge(listObject,i,0,i,1);
+                    let t = new tObj(e1, NormalObj, e2);
+                    let t2 = new tObj(e1, NormalObj, e3);
+                    let newP1 = new newP(listObject, t.val, i, 1, 2);
+                    let newP2 = new newP(listObject, t2.val, i, 1, 0);
+                    let newMesh1 = [
+                        [listObject[i][1][0],listObject[i][1][1],listObject[i][1][2]],
+                        newP1,
+                        newP2
+                    ];
+                    let newMesh2 = [
+                        [listObject[i][2].x,listObject[i][2].y,listObject[i][1][2]],
+                        newP1,
+                        [listObject[i][0][0],listObject[i][0][1],listObject[i][0][2]]
+                    ];
+                    let newMesh3 = [
+                        [listObject[i][0][0],listObject[i][0][1],listObject[i][0][2]],
+                        newP1,
+                        newP2
+                    ];
+                    if(b > 0){
+                        leftList.push(newMesh2);
+                        leftList.push(newMesh3);
+                    }else{
+                        leftList.push(newMesh1);
+                    }
+                }
+                
+            }else if ((b <= 0 && c <= 0 && a > 0) || (b > 0 && c > 0 && a <= 0)){
+                let c1 = new edge(listObject,i,0,0,0);
+                let c2 = new edge(listObject,i,0,0,1);
+                let c3 = new edge(listObject,i,0,0,2);
+                let cross1 = new cross(edge1Obj, c1);
+                let cross2 = new cross(edge2Obj, c2);
+                let cross3 = new cross(edge3Obj, c3);
+                let param1 = new param(NormalObj, cross1);
+                let param2 = new param(NormalObj, cross2);
+                let param3 = new param(NormalObj, cross3);
+                
+                if(param1.val <= -1 || param2.val <= -1 || param3.val <= -1){
+                    leftList.push(listObject[i]);
+                }else{
+                    let e1 = new edge(listObject,0,0,i,0);
+                    let e2 = new edge(listObject,i,1,i,0);
+                    let e3 = new edge(listObject,i,2,i,0);
+                    let t = new tObj(e1, NormalObj, e2);
+                    let t2 = new tObj(e1, NormalObj, e3);
+                    let newP1 = new newP(listObject, t.val, i, 0, 1);
+                    let newP2 = new newP(listObject, t2.val, i, 0, 2);
+                    let newMesh1 = [
+                        [listObject[i][0][0],listObject[i][0][1],listObject[i][0][2]],
+                        newP1,
+                        newP2
+                    ];
+                    let newMesh2 = [
+                        [listObject[i][1][0],listObject[i][1][1],listObject[i][1][2]],
+                        newP1,
+                        [listObject[i][2].x,listObject[i][2].y,listObject[i][2].z]
+                    ];
+                    let newMesh3 = [
+                        [listObject[i][2].x,listObject[i][2].y,listObject[i][2].z],
+                        newP1,
+                        newP2
+                    ];
+                    if(a > 0){
+                        leftList.push(newMesh2);
+                        leftList.push(newMesh3);
+                    }else{
+                        leftList.push(newMesh1);
+                    }
+                }
+            }
+        }
+    }
+    if(leftList.length>0){
+        PaintedLines(leftList);
+        sortedList.push(listObject[0]);
+    }else{
+        sortedList.push(listObject[0]);
+    }
+    if(rightList.length>0){
+        PaintedLines(rightList);
+    }
 }
