@@ -26,6 +26,9 @@ You may use the built-in procedure for drawing a line.
 - [x] implement back face culling.
 
 ## CHANGELOG
+- v.0.2.1 - added delete overlapping mesh on save(11/1/20-12.45 AM)
+  * still buggy but we don't have anytime to fix it. (plus i'm lazy lol)
+
 -- added backface culling to main(10/29/20-1.24 AM)
 
 - v.0.2.0 - added save mesh, and change mesh color features(10/28/20-8.02 PM)
