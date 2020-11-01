@@ -26,6 +26,10 @@ You may use the built-in procedure for drawing a line.
 - [x] implement back face culling.
 
 ## CHANGELOG
+- v.0.2.2 - added view normal on polygon lists
+  * added this feature cause apparently it is on the pA-7 docs.
+  * the normal isn't updated in real time cause its too much of a hassle
+
 - v.0.2.1 - added delete overlapping mesh on save(11/1/20-12.45 AM)
   * still buggy but we don't have anytime to fix it. (plus i'm lazy lol)
 
