@@ -18,12 +18,8 @@ The polygons in this application are represented using a list of vertex coordina
 You may use the built-in procedure for drawing a line.
 
 ## TODO:
-- [ ] Create logic to create polygon mesh with list of vertex coordinates.
-- [ ] Implement V.0.2.0 features to main.
-- [x] create function to save mesh.
-- [ ] create function to rotate by the camera, not the mesh (unnecessary, maybe ?).
-- [x] rotate by z axis. the current implementation is 2 axis.
-- [x] implement back face culling.
+- [ ] Implement V.0.2.2 features to main.
+
 
 ## CHANGELOG
 - v.0.2.2 - added view normal on polygon lists
