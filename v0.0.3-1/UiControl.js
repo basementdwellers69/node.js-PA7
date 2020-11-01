@@ -1,7 +1,6 @@
 import{scene, meshCtrld, render, camera, onClick} from './main.js';
 import {createMesh, Vec, rotate, offset} from './mesh.js';
-import {offsetToCenter} from './render.js';
-//import {PaintedLines} from './paintedLines.js';
+import {offsetToCenter, getNormal, vecCrossProduct, VecDotProduct, VecminVec} from './render.js';
 
 export let sortedList=[];
 
@@ -48,13 +47,11 @@ export function saveMeshObj(){
        curMesh.map(e=>obj.push(e));
        
    });
-    console.log(obj);
     callPaintedLines();
 
     function callPaintedLines(){
         sortedList=[];
         PaintedLines(obj);
-        console.log(sortedList);
     }
     let data = JSON.stringify({"obj":JSON.stringify(sortedList).replace(/"(x|y|z)": ?/g,'').replace(/{/g,'[').replace(/}/g,']')}).replace(/"/g,'').replace(/obj/i,'"obj"');
     let saveAs = prompt("Save file as","New Mesh");
@@ -147,6 +144,8 @@ function prettyPrintArray(json) {
 
 //collect data that is inserted 
 export function addli(obj) {
+    let objNormal = ((VecDotProduct(getNormal(obj), camera.pos)));
+    console.log(objNormal);
     if(ul.children.length === 0){
         let li = document.createElement("li");
         let btn = document.createElement("button");
@@ -154,7 +153,7 @@ export function addli(obj) {
         btn.innerHTML = "X";
         btn.addEventListener("click", (e) => { ifDelLi(e); });
         li.addEventListener("click", choosePoints);
-        li.innerHTML = prettyPrintArray(obj);
+        li.innerHTML = prettyPrintArray(obj) + '<br>' + "Normal : " + objNormal;
         li.value = 0;
         li.onmouseover= function(){hover(this)};
         li.onmouseout= function(){hoverOff(this)};
@@ -173,7 +172,7 @@ export function addli(obj) {
         btn.innerHTML = "X";
         btn.addEventListener("click", (e) => { ifDelLi(e); });
         li.addEventListener("click", choosePoints);
-        li.innerHTML = prettyPrintArray(obj);
+        li.innerHTML = prettyPrintArray(obj) + '<br>' + "Normal : " + objNormal;
         li.value = liVal;
         li.onmouseover= function(){hover(this)};
         li.onmouseout= function(){hoverOff(this)};
@@ -321,7 +320,7 @@ export function press(e){
                     render(scene, camera);
                     break;
                 case 81:
-                    scene[meshCtrld].rotation.z += 0.01;
+                    scene[meshCtrld].rotation.z += 0.01;;
                     render(scene, camera);
                     break;
                 case 88:
