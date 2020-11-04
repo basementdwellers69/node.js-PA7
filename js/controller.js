@@ -1,3 +1,16 @@
+import { 
+    setMeshColor, 
+    inputMeshFile, 
+    loadMeshFile, 
+    selectMesh, 
+    saveMeshObj, 
+    deleteMesh, 
+    resizeCanvas,
+    onKeyDownListener,
+    setBFC,
+    enterPolygon
+} from "./main.js"
+
 var showBNB = function(e) {
     switch(e.id) {
         case 'add-polygon':
@@ -17,6 +30,10 @@ var showBNB = function(e) {
             break
         case 'move-mesh':
             c13.style.display = 'inline-flex'
+            break
+        case 'change-color-mesh':
+            c19.style.display = 'inline-flex'
+            // force to get the mesh color
             break
     }
     c4.classList.add('animate-slide-in')
@@ -49,6 +66,9 @@ var hideBNB = function(){
             case 'move-mesh':
                 c13.style.display = 'none'
                 break
+            case 'change-color-mesh':
+                c19.style.display = 'none'
+                break
         }
         currentStateElement = null
         c3.innerHTML = document.title
@@ -80,6 +100,9 @@ document.getElementsByName('states').forEach(el => {
                     case 'move-mesh':
                         c13.style.display = 'none'
                         break
+                    case 'change-color-mesh':
+                        c19.style.display = 'none'
+                        break
                 }
                 currentStateElement.checked = false
                 currentStateElement = null
@@ -92,28 +115,7 @@ document.getElementsByName('states').forEach(el => {
         }
     })
 })
-
-document.getElementsByName('bfc-states').forEach(el => {
-    el.addEventListener('change', () => {
-        var changeMessage = function(tmp, msg) {
-            c3.innerHTML = 'BFC ' + msg;
-            setTimeout(handler => {
-                c3.innerHTML = document.title;
-            }, 1500)
-        }
-        if(el.checked) {
-            el.parentElement.childNodes[1].value = "1";        
-            console.log('BFC is enabled');
-            el.parentElement.getElementsByTagName('span')[0].innerHTML = 'Enabled';
-            changeMessage(c3.innerText, 'enabled');
-        }else {
-            el.parentElement.childNodes[1].value = "0";
-            console.log('BFC is disabled');
-            el.parentElement.getElementsByTagName('span')[0].innerHTML = 'Disabled';
-            changeMessage(c3.innerText, 'disabled');
-        }
-    })
-})
+c17.addEventListener('change', setBFC)
 
 let cz = document.getElementsByClassName('bnb-item')
 for(i=0; i < cz.length; i++){
@@ -122,3 +124,15 @@ for(i=0; i < cz.length; i++){
     cz[i].style.display = 'none'
 }
 c5.addEventListener('click', hideBNB)
+
+c1.addEventListener('change', inputMeshFile)
+c2.addEventListener('click', saveMeshObj)
+c6.addEventListener('click', loadMeshFile)
+c8.addEventListener('click', selectMesh)
+c10.addEventListener("click", deleteMesh)
+c20.addEventListener('input', setMeshColor)
+c24.addEventListener('click', enterPolygon)
+window.addEventListener('resize', resizeCanvas)
+window.addEventListener('keydown', onKeyDownListener)
+
+setMeshColor()

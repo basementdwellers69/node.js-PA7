@@ -7,8 +7,6 @@ function loadScript(script_source) {
     }
 }
 loadScript([
-    // {'source' : 'js/states.js', 'type' : 'text/javascript'},
-    // {'source' : 'js/canvas.js', 'type' : 'text/javascript'},
     {'source' : 'js/dom.js', 'type' : 'text/javascript'},
     {'source' : 'js/controller.js', 'type' : 'module'},
     {'source' : 'js/main.js', 'type' : 'module'},
@@ -28,11 +26,9 @@ var setContent = function(e) {
     function b(z){
         let current = document.getElementsByClassName('content--active')
         if(current.length != 0){
-            // current[0].style.display = 'none'
             current[0].classList.replace('content--active', 'content--inactive')
         }
         z.classList.replace('content--inactive', 'content--active')
-        // z.style.display = 'inline-flex'
     }
     a(e)
     switch(e.text){

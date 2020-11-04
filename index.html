@@ -71,17 +71,18 @@
             <div id="sidenav_left" class="main-item" style="display: inline-flex;">
                 <div id="controller" class="controller">
                     <div class="controller-flex">
-                        <h5>Mesh</h5>
+                        <h5>Mesh File</h5>
                         <input type="button" id="save-mesh" class="controller-item btn btn-outline-dark btn-sm" value="Save mesh"/>
                         <input type="button" id="load-mesh" class="controller-item btn btn-outline-dark btn-sm" 
                         data-toggle="modal" data-target="#modal-load-mesh" value="Load mesh"/>
                         <input type="button" id="select-mesh" class="controller-item btn btn-outline-dark btn-sm" value="Select mesh"/>
+                        <input type="button" id="delete-mesh" class="controller-item btn btn-outline-dark btn-sm" value="Delete mesh"/>
                         <br>
                         <small>selected mesh : <span id="msg-select-mesh">0</span></small>
                     </div>
                     <hr>
-                    <!-- add active class if it's selected -->
-                    <div class=" controller-flex">
+                    <!-- add active class if it's selected
+                    <div class="">
                         <h5>Polygon</h5>
                         <div class="btn-group-toggle">
                             <label for="add-polygon" class="controller-item btn btn-outline-dark btn-sm">
@@ -98,10 +99,10 @@
                             </label>
                         </div>
                     </div>
-                    <hr>
+                    <hr> -->
                     <!-- add active class if it's selected -->
-                    <div class=" controller-flex">
-                        <h5>Mesh</h5>
+                    <div class="">
+                        <h5>Mesh Tool</h5>
                         <div class="btn-group-toggle">
                             <label for="zoom-mesh" class="controller-item btn btn-outline-dark btn-sm">
                                 <input type="radio" id="zoom-mesh" name="states"/>
@@ -115,11 +116,15 @@
                                 <input type="radio" id="move-mesh" name="states"/>
                                 Move
                             </label>
+                            <label for="change-color-mesh" class="controller-item btn btn-outline-dark btn-sm">
+                                <input type="radio" id="change-color-mesh" name="states"/>
+                                Change color
+                            </label>
                         </div>
                     </div>
                     <hr>
                     <!-- add active class if it's selected -->
-                    <div class=" controller-flex">
+                    <div class="">
                         <h5>Back Face Culling</h5>
                         <div class="btn-group-toggle" data-toggle="buttons">
                             <label for="bfc-checkbox" class="controller-item btn btn-outline-dark btn-sm">
@@ -138,14 +143,29 @@
                 <canvas id="canvas" class="cursor--crosshair" ondblclick="false"></canvas>
                 
                 <div id="sidenav_right" class="">
-                    <div id="cursor-position">
-                        <h5>Cursor Position</h5>
-                        x : <span id="cursor-X">-</span> <br>
-                        y : <span id="cursor-Y">-</span>
+                    <div id="container-point-polygon">
+                        <h5>Polygon Point</h5>
+                        <label>Point 1</label><br>
+                        <input type="text" placeholder="x1" class="form-control">
+                        <input type="text" placeholder="y1" class="form-control">
+                        <input type="text" placeholder="z1" class="form-control"><br>
+                        <label>Point 2</label><br>
+                        <input type="text" placeholder="x2" class="form-control">
+                        <input type="text" placeholder="y2" class="form-control">
+                        <input type="text" placeholder="z2" class="form-control"><br>
+                        <label>Point 3</label><br>
+                        <input type="text" placeholder="x3" class="form-control">
+                        <input type="text" placeholder="y3" class="form-control">
+                        <input type="text" placeholder="z3" class="form-control"><br>
+                        <input type="button" id="enter-point-polygon"
+                         class="controller-item btn btn-outline-dark btn-sm" value="Enter Polygon"/>
+                        <!-- <input type="button" id="edit-point-polygon"
+                        class="controller-item btn btn-outline-dark btn-sm" value="Edit Polygon"/> -->
                     </div>
                     <hr>
                     <div id="polygon-list">
                         <h5>Polygon List</h5>
+                        <ul></ul>
                     </div>
                 </div>
             </div>
@@ -221,6 +241,10 @@
                 </section>
                 <section id="bnb-delete" class="bnb-item bnb-align-start">
                     <small>Delete</small>
+                </section>
+                <section id="bnb-change-color" class="bnb-item bnb-align-start">
+                    <small>Change Color : </small>
+                    <input id="input-change-color-mesh" type="color" value="#333333">
                 </section>
                 <section class="bnb-item bnb-align-end">
                     <a id="close" class="bnb-close-span" href="#">EXIT</a>

@@ -11,13 +11,13 @@ function toPolygon(shape) {
 }
 
 // SET SCALE
-function offset(point, position) {
+export function offset(point, position) {
     point.x += position.x;
     point.y += position.y;
     point.z += position.z;
 }
 
-function rotate(point, rotation) {
+export function rotate(point, rotation) {
     const sin = new Vec(
         Math.sin(rotation.x),
         Math.sin(rotation.y),

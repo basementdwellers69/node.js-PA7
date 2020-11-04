@@ -42,18 +42,18 @@ function drawPolygon(polygon, context) {
     context.stroke();
 }
 
-function vecCrossProduct(vecA, vecB){
+export function vecCrossProduct(vecA, vecB){
     let res = new Vec();
     res.x = (vecA.x * vecB.z) - (vecA.z * vecB.y);
     res.y = (vecA.z * vecB.x) - (vecA.x * vecB.z);
     res.z = (vecA.x * vecB.y) - (vecA.y * vecB.x);
     return res;
 }
-function VecDotProduct(VecA, VecB){
+export function VecDotProduct(VecA, VecB){
     return (VecA.x * VecB.x) + (VecA.y * VecB.y) + (VecA.z * VecB.z);
 }
 
-function VecminVec(vecA, vecB){
+export function VecminVec(vecA, vecB){
     let res = new Vec();
     res.x = vecA.x - vecB.x;
     res.y = vecA.y - vecB.y;
@@ -61,7 +61,7 @@ function VecminVec(vecA, vecB){
     return res;
 }
 
-function getNormal(polygon){
+export function getNormal(polygon){
     return vecCrossProduct((VecminVec(polygon[1], polygon[0])), (VecminVec(polygon[2], polygon[0])));
 }
 

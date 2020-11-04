@@ -18,7 +18,7 @@ The polygons in this application are represented using a list of vertex coordina
 You may use the built-in procedure for drawing a line.
 
 ## TODO:
-- [ ] Implement V.0.2.2 features to main.
+- [x] Implement V.0.2.2 features to main.
 
 
 ## CHANGELOG
