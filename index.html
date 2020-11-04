@@ -81,25 +81,6 @@
                         <small>selected mesh : <span id="msg-select-mesh">0</span></small>
                     </div>
                     <hr>
-                    <!-- add active class if it's selected
-                    <div class="">
-                        <h5>Polygon</h5>
-                        <div class="btn-group-toggle">
-                            <label for="add-polygon" class="controller-item btn btn-outline-dark btn-sm">
-                                <input type="radio" id="add-polygon" name="states"/>
-                                Add
-                            </label>
-                            <label for="edit-polygon" class="controller-item btn btn-outline-dark btn-sm">
-                                <input type="radio" id="edit-polygon" name="states"/>
-                                Edit
-                            </label>
-                            <label for="delete-polygon" class="controller-item btn btn-outline-dark btn-sm">
-                                <input type="radio" id="delete-polygon" name="states"/>
-                                Delete
-                            </label>
-                        </div>
-                    </div>
-                    <hr> -->
                     <!-- add active class if it's selected -->
                     <div class="">
                         <h5>Mesh Tool</h5>
@@ -159,8 +140,6 @@
                         <input type="text" placeholder="z3" class="form-control"><br>
                         <input type="button" id="enter-point-polygon"
                          class="controller-item btn btn-outline-dark btn-sm" value="Enter Polygon"/>
-                        <!-- <input type="button" id="edit-point-polygon"
-                        class="controller-item btn btn-outline-dark btn-sm" value="Edit Polygon"/> -->
                     </div>
                     <hr>
                     <div id="polygon-list">
@@ -182,7 +161,9 @@
                             <li><b>S , DOWN-ARROW</b> : rotate or move the mesh down, based on the states selected.</li>
                             <li><b>A , LEFT-ARROW</b> : rotate or move the mesh left, based on the states selected.</li>
                             <li><b>D , RIGHT-ARROW</b> : rotate or move the mesh right, based on the states selected.</li>
-                            <li><b>Z</b> : zoom-in the mesh.</li>
+                            <li><b>Q</b> : rotate the selected mesh by Z axis.</li>
+                            <li><b>E</b> : rotate the selected mesh by Z axis.</li>
+                            <li><b>X</b> : zoom-out the mesh.</li>
                             <li><b>X</b> : zoom-out the mesh.</li>
                         </ul>
                     </p>

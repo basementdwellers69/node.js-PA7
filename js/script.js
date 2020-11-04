@@ -14,8 +14,6 @@ loadScript([
 
 content = document.getElementsByClassName('main-item')
 nav_link = document.getElementsByClassName('nav-link')
-console.log(content)
-console.log(nav_link)
 var setContent = function(e) {
     function a(r){
         let current = document.getElementsByClassName('nav-link__active')

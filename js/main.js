@@ -150,6 +150,7 @@ export var saveMeshObj = function(){
 export var deleteMesh = function(){
     scene.splice(meshCtrld, 1);
     meshCtrld = 0;
+    if(scene[meshCtrld] === undefined) newMesh()
     render(scene, camera);
     selectMesh()
 }
