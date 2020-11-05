@@ -53,7 +53,7 @@ function newMesh() {
 }
 
 (scene[meshCtrld] === undefined || scene[meshCtrld].length < 0) ? 
-    newMesh() : scene[meshCtrld].polygons.map(addLi);
+    console.log('no mesh loaded.') : scene[meshCtrld].polygons.map(addLi);
     
 // KEYBOARD CONTROLLER
 export var onKeyDownListener = function(e){
@@ -283,6 +283,9 @@ export var enterPolygon = function() {
             resetList();
             render(scene, camera);
         }else {
+            if(scene[meshCtrld] === undefined){
+                newMesh()
+            }
             scene[meshCtrld].polygons.push(temp);
             addLi(temp);
             render(scene, camera);
@@ -306,8 +309,7 @@ var addLi = function(obj) {
     li.addEventListener("click", choosePoints);
     li.addEventListener('mouseenter', onMouseEnterPolygonList)
     li.addEventListener('mouseleave', onMouseLeavePolygonList)
-    li.innerHTML = buildList(obj);
-    // + "<small>Normal : " + objNormal + "</small>"
+    li.innerHTML = buildList(obj) + "<br><small>Normal : " + objNormal + "</small>";
     li.value = liVal;
     // li.classList.add('ac')
     liVal++;
