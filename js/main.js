@@ -150,7 +150,7 @@ export var saveMeshObj = function(){
 export var deleteMesh = function(){
     scene.splice(meshCtrld, 1);
     meshCtrld = 0;
-    if(scene[meshCtrld] === undefined) newMesh()
+    if(scene[meshCtrld] === undefined) console.log('mesh deleted, no mesh found')
     render(scene, camera);
     selectMesh()
 }
