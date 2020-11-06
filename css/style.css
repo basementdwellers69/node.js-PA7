@@ -185,6 +185,12 @@ input[type=button]:focus {
     from{ bottom: 30;}
     to { bottom: -70px;}
 }
+.li-val {
+    color: lightcoral;
+}
+.li-normal {
+    color: rgb(67, 117, 211);
+}
 
 #main {
     /* margin-top: 1vh; */

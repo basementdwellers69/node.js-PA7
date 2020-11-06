@@ -300,7 +300,7 @@ var addLi = function(obj) {
     let li = document.createElement("li");
     let btn = document.createElement("input");
     btn.setAttribute('type', 'button')
-    btn.setAttribute('value', 'Delete Point')
+    btn.setAttribute('value', 'Delete Polygon')
     btn.classList.add('btn')
     btn.classList.add('btn-outline-dark')
     btn.classList.add('btn-sm')
@@ -309,8 +309,9 @@ var addLi = function(obj) {
     li.addEventListener("click", choosePoints);
     li.addEventListener('mouseenter', onMouseEnterPolygonList)
     li.addEventListener('mouseleave', onMouseLeavePolygonList)
-    li.innerHTML = buildList(obj) + "<br><small>Normal : " + objNormal + "</small>";
     li.value = liVal;
+    li.innerHTML = "<small class=\"li-val\">Polygon("+li.value+")</small><br>"
+    li.innerHTML += buildList(obj) + "<br><small class=\"li-normal\">Normal : " + objNormal + "</small>";
     // li.classList.add('ac')
     liVal++;
     li.appendChild(btn);
