@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <script src="lib/jquery-3.5.1.js"></script>
+        <!-- bootstrap-4 -->
+        <link rel="stylesheet" href="lib/bootstrap-4.5.3-dist/css/bootstrap.min.css">
+        <script src="lib/bootstrap-4.5.3-dist/js/bootstrap.bundle.min.js"></script>
+        <!-- font used -->
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> 
+        <link rel="stylesheet" href="css/style.css" type="text/css">
+        <title>Programming Assignment 7</title>
+    </head>
+    <body class="cursor--auto">
+        <div id="nav" class="top-app-bar">
+            <div class="top-app-bar--row">
+                <section class="top-app-bar__section top-app-bar__section--align-start">
+                  <span class="top-app-bar__title"><a href="">Programming Assignment 7</a></span>
+                </section>
+                <section class="top-app-bar__section top-app-bar__section--align-end" role="toolbar">
+                    <ul class="nav-list">
+                        <li class="nav-item"><a class="nav-link" href="#">Canvas</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Tutorial</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+                    </ul>
+                    <!-- <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Favorite">favorite</button>
+                    <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Search">search</button>
+                    <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Options">more_vert</button> -->
+                </section>
+            </div>
+        </div>
+        <!-- The Modal -->
+        <div class="modal fade" id="modal-load-mesh" tabindex="-1" role="dialog" aria-labelledby="loadMeshModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="loadMeshModalCenterTitle">Load Mesh</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                please select the file to load: <hr>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="inputGroupFileAddon01">Load</span>
+                    </div>
+                    <div class="custom-file">
+                      <input type="file" class="custom-file-input" id="input-file" aria-describedby="inputGroupFileAddon01">
+                      <label class="custom-file-label" for="input-file"><span id="file-name">Choose file</span></label>
+                    </div>
+                  </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" id="modal-close" class="btn btn-outline-dark" data-dismiss="modal">Close</button>
+                <button type="button" id="load-file" class="btn btn-primary btn-dark" disabled>Load file</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div id="main" class="main">
+            <div id="sidenav_left" class="main-item" style="display: inline-flex;">
+                <div id="controller" class="controller">
+                    <div class="controller-flex">
+                        <h5>Mesh File</h5>
+                        <input type="button" id="save-mesh" class="controller-item btn btn-outline-dark btn-sm" value="Save mesh"/>
+                        <input type="button" id="load-mesh" class="controller-item btn btn-outline-dark btn-sm" 
+                        data-toggle="modal" data-target="#modal-load-mesh" value="Load mesh"/>
+                        <input type="button" id="select-mesh" class="controller-item btn btn-outline-dark btn-sm" value="Select mesh"/>
+                        <input type="button" id="delete-mesh" class="controller-item btn btn-outline-dark btn-sm" value="Delete mesh"/>
+                        <br>
+                        <small>selected mesh : <span id="msg-select-mesh">0</span></small>
+                    </div>
+                    <hr>
+                    <div class="">
+                        <h5>Mesh Tool</h5>
+                        <div class="btn-group-toggle">
+                            <label for="zoom-mesh" class="controller-item btn btn-outline-dark btn-sm">
+                                <input type="radio" id="zoom-mesh" name="states"/>
+                                Zoom
+                            </label>
+                            <label for="rotate-mesh" class="controller-item btn btn-outline-dark btn-sm">
+                                <input type="radio" id="rotate-mesh" name="states"/>
+                                Rotate
+                            </label>
+                            <label for="move-mesh" class="controller-item btn btn-outline-dark btn-sm">
+                                <input type="radio" id="move-mesh" name="states"/>
+                                Move
+                            </label>
+                            <label for="change-color-mesh" class="controller-item btn btn-outline-dark btn-sm">
+                                <input type="radio" id="change-color-mesh" name="states"/>
+                                Change color
+                            </label>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="">
+                        <h5>Back Face Culling</h5>
+                        <div class="btn-group-toggle" data-toggle="buttons">
+                            <label for="bfc-checkbox" class="controller-item btn btn-outline-dark btn-sm">
+                                <input type="checkbox" id="bfc-checkbox" name="bfc-states"/>
+                                <span>Disabled</span>
+                            </label>
+                        </div>
+                    </div>
+                    <hr>
+                    <div id="bottom-bar" class="controller-flex bottom-bar">
+                        <small id="message">Programming Assignment 7</small>
+                    </div>
+                </div>    
+            </div>
+            <div id="canvas_container" class="main-item content--inactive">
+                <canvas id="canvas" class="cursor--crosshair" ondblclick="false"></canvas>
+                
+                <div id="sidenav_right" class="">
+                    <div id="container-point-polygon">
+                        <h5>Polygon Point</h5>
+                        <label>Point 1</label><br>
+                        <input type="text" placeholder="x1" class="form-control">
+                        <input type="text" placeholder="y1" class="form-control">
+                        <input type="text" placeholder="z1" class="form-control"><br>
+                        <label>Point 2</label><br>
+                        <input type="text" placeholder="x2" class="form-control">
+                        <input type="text" placeholder="y2" class="form-control">
+                        <input type="text" placeholder="z2" class="form-control"><br>
+                        <label>Point 3</label><br>
+                        <input type="text" placeholder="x3" class="form-control">
+                        <input type="text" placeholder="y3" class="form-control">
+                        <input type="text" placeholder="z3" class="form-control"><br>
+                        <input type="button" id="enter-point-polygon"
+                         class="controller-item btn btn-outline-dark btn-sm" value="Enter Polygon"/>
+                    </div>
+                    <hr>
+                    <div id="polygon-list">
+                        <h5>Polygon List</h5>
+                        <ul></ul>
+                    </div>
+                </div>
+            </div>
+            <div id="tutorial" class="main-item content--inactive">
+                <div class="content a">
+                    <h1>Tutorial</h1>
+                    <hr>
+                    <br>
+                    <h3>Mesh</h3>
+                    <p>
+                        the Mesh control is defined by Keyboard-Event. it has several events, as listed below:</p>
+                        <ul style="list-style: circle;">
+                            <li><b>W , UP-ARROW</b> : rotate or move the mesh up, based on the states selected.</li>
+                            <li><b>S , DOWN-ARROW</b> : rotate or move the mesh down, based on the states selected.</li>
+                            <li><b>A , LEFT-ARROW</b> : rotate or move the mesh left, based on the states selected.</li>
+                            <li><b>D , RIGHT-ARROW</b> : rotate or move the mesh right, based on the states selected.</li>
+                            <li><b>Q</b> : rotate the selected mesh by Z axis.</li>
+                            <li><b>E</b> : rotate the selected mesh by Z axis.</li>
+                            <li><b>X</b> : zoom-out the mesh.</li>
+                            <li><b>X</b> : zoom-out the mesh.</li>
+                        </ul>
+                    <!-- </p> -->
+                </div>
+            </div>
+            <div id="about" class="main-item content content--inactive">
+                <div class="content a">
+                    <h1>About</h1>
+                    <hr>
+                    <br>
+                    <p>
+                        The program allows user to create Polygon mesh in web platform using 
+                        <a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API">canvas API</a>. 
+                        The polygons are represented using a list of vertex coordinates.
+                    </p>
+                    <p>
+                        This program is licensed under the <b>Creative Commons Zero v1.0 Universal</b>.
+                        For further details, <a href="LICENSE.txt">click here.</a>
+                    </p>
+                    <!-- <p>
+                        kindly visit our repositories and check our <b>README.md</b> files for further details: 
+                        <a href="https://github.com/basementdwellers69/node.js-PA7/">
+                            https://github.com/basementdwellers69/node.js-PA7/
+                        </a>
+                    </p> -->
+                    <p>
+                        Sincerely, our team:
+                        <ul style="list-style: circle;">
+                            <li><a href="#">Adjie Ghusa Mahendra</a></li>
+                            <li><a href="#">Geraldo Febrian J.</a></li>
+                            <li><a href="#">Ibnu Athailah</a></li>
+                        </ul>
+                    </p>
+                </div>
+            </div>
+        </div>
+       <div id="bottom-nav-bar">
+            <div id="bnb-container" class="bnb-container">
+                <section id="bnb-zoom" class="bnb-item bnb-align-start">
+                    <small>Zoom</small>
+                </section>
+                <section id="bnb-rotate" class="bnb-item bnb-align-start">
+                    <small>Rotate</small>
+                </section>
+                <section id="bnb-move" class="bnb-item bnb-align-start">
+                    <small>Move</small>
+                </section>
+                <section id="bnb-add" class="bnb-item bnb-align-start">
+                    <small>Add</small>
+                </section>
+                <section id="bnb-edit" class="bnb-item bnb-align-start">
+                    <small>Edit</small>
+                </section>
+                <section id="bnb-delete" class="bnb-item bnb-align-start">
+                    <small>Delete</small>
+                </section>
+                <section id="bnb-change-color" class="bnb-item bnb-align-start">
+                    <small>Change Color : </small>
+                    <input id="input-change-color-mesh" type="color" value="#333333">
+                </section>
+                <section class="bnb-item bnb-align-end">
+                    <a id="close" class="bnb-close-span" href="#">EXIT</a>
+                </section>
+            </div>
+        </div>
+        <script src="js/script.js"></script>
+    </body>
+</html>
