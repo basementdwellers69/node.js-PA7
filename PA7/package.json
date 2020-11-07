@@ -34,7 +34,7 @@
     "name": "Gerald",
     "email": "geraldo.febrian12@gmail.com"
   },
-  "license": "MIT",
+  "license": "CC0",
   "config": {
     "forge": {
       "packagerConfig": {},
