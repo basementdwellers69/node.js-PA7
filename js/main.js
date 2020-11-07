@@ -264,6 +264,21 @@ var clone = function() {
 prevPolygonPoints = clone()
 export var enterPolygon = function() {
     var isPointChanged = false;
+    console.log(prevPolygonPoints)
+    // first, check if there is an empty text fields
+    for(i=0; i<prevPolygonPoints.length; i++){
+        if(c22[i].value != ""){
+            if(!Number.isInteger(c22[i].value)){
+                alert('Input field for integer only.')
+                prevPolygonPoints = clone()
+                return
+            }
+        }else {
+            alert('Please fill all the point')
+            prevPolygonPoints = clone()
+            return
+        }
+    }
     // check if there is any differences with previous
     for(i=0; i<prevPolygonPoints.length; i++){
         // console.log('prevpoint['+i+'] : '+ prevPolygonPoints[i] + ', c22['+i+'] : '+ c22[i].value)
