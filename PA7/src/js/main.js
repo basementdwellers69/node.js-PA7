@@ -9,6 +9,10 @@ camera = new Camera();
 camera.pos.z = 300;
 camera.zoom = 20;
 
+const Dialogs = require('dialogs');
+console.log(Dialogs);
+const dialogs = Dialogs();
+
 var adjustCanvasSize = function() {
     myCanvas.width = window.innerWidth * (65/100)
     myCanvas.height = window.innerHeight * (89/100)
@@ -246,20 +250,27 @@ export var enterPolygon = function() {
     // first, check if there is an empty text fields
     for(i=0; i<prevPolygonPoints.length; i++){
         if(c22[i].value != ""){
-            if(!Number.isInteger(c22[i].value)){
-                alert('Input field for integer only.')
+            if(!Number.isInteger(parseInt(c22[i].value))){
+                dialogs.alert('Input field for integer only.', ok => {
+                    console.log('alerts', ok);
+                    console.log(c22[i])
+                    c22[i].focus();
+                    prevPolygonPoints = clone()
+                })
+                // alert('Input field for integer only.')
                 prevPolygonPoints = clone()
                 return
             }
         }else {
-            alert('Please fill all the point')
-            prevPolygonPoints = clone()
+            dialogs.alert('Please fill al the point', ok => {
+                console.log('alerts', ok);
+                prevPolygonPoints = clone()
+            })
             return
         }
     }
     // check if there is any differences with previous
     for(i=0; i<prevPolygonPoints.length; i++){
-        // console.log('prevpoint['+i+'] : '+ prevPolygonPoints[i] + ', c22['+i+'] : '+ c22[i].value)
         if(prevPolygonPoints[i] != c22[i].value){
             isPointChanged = true;
             break;
