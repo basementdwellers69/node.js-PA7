@@ -19,9 +19,10 @@ You may use the built-in procedure for drawing a line.
 
 ## TODO:
 - [x] Implement V.0.2.2 features to main.
-
+- [x] Create exe file
 
 ## CHANGELOG
+- v.1.0.0 - implement all recent features to main, create exe file using electron, edit and fix bugs
 - v.0.2.2 - added view normal on polygon lists
   * added this feature cause apparently it is on the pA-7 docs.
   * the normal isn't updated in real time cause its too much of a hassle
